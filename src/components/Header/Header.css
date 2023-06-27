@@ -20,6 +20,7 @@
 .mainRegisterButton {
     width: 77px;
     height: 16px;
+    font-weight: 400;
     font-size: 12px;
     font-weight: 500;
     line-height: 16px;
@@ -42,4 +43,18 @@
     line-height: 16px;
     color: black;
     margin-right: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .headerLogo {
+        margin-left: 30px;
+    }
+
+    .mainRegisterButton {
+        margin-right: 36px;
+    }
+
+    .mainAuthorizeButton {
+        margin-right: 30px; 
+    }
 }

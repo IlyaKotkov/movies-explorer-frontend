@@ -1,0 +1,55 @@
+.AboutMe {
+    background-color: #202020;
+}
+
+.photoMe {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    background: lightgray 50% / cover no-repeat;
+}
+
+.descriptionStudent {
+    margin: 0;
+    margin-top: 66px;
+}
+
+.nameStudent {
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 18px;
+    color: #FFF;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -2px;
+    min-width: 292px;
+}
+
+.descriptionMe {
+    margin: 0;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.aboutTheStudent {
+    margin: 0;
+    margin-top: 26px;
+    margin-bottom: 99px;
+    min-width: 292px;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Inter;
+    line-height: 22px;
+}
+
+.linkGitHub {
+    color: #FFF;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}

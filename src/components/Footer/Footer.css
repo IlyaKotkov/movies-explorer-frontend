@@ -1,0 +1,50 @@
+.Footer {
+    margin: 0 auto;
+    height: 172px;
+}
+
+.footerContainer {
+    margin: 0;
+    margin-top: 79px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.footerProjectName {
+    margin: 0;
+    color: #8B8B8B;
+    min-width: 320px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 400;
+    border-bottom: 1px solid #424242;;
+}
+
+.footerLinkAndYearContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.praktikumLink {
+    margin-right: 20px;
+    color: #FFF;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.ghLink {
+    color: #FFF;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.projectYear {
+    color: #FFF;
+    margin: 0;
+}
