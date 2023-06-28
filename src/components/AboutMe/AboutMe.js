@@ -9,7 +9,7 @@ export default function AboutMe() {
                 <div className='ProjectHeadingContainer'>
                     <h2 className='ProjectHeading'>Студент</h2>
                 </div>
-                <div className='descriptionContainer'>
+                <div className='descriptionStudentContainer'>
                     <div className='descriptionStudent'>
                         <h3 className='nameStudent'>Илья</h3>
                         <p className='descriptionMe'>Фронтенд-разработчик, 20 лет</p>

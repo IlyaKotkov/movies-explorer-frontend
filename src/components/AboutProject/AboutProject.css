@@ -1,12 +1,11 @@
 .AboutProject {
-    margin: 0;
+    margin: 0 auto;
     min-height: 585px;
     background-color: #202020;
 }
 
 .ProjectContainer {
     margin: 0;
-    min-width: 320px;
     padding-top: 110px;
     padding-right: 70px;
     padding-bottom: 110px;
@@ -24,7 +23,7 @@
     font-weight: 400;
     font-size: 22px;
     letter-spacing: -0.88px;
-    margin-bottom: 23px;
+    margin-bottom: 30px;
 }
 
 .descriptionContainer {
@@ -54,6 +53,11 @@
 .stagesAndTimeContainer {
     margin: 0;
     min-width: 284px;
+    margin-right: 50px;
+}
+
+.stagesAndTimeContainer:last-child {
+    margin-right: 0px;
 }
 
 .timeBandBackEnd {
@@ -66,7 +70,8 @@
 
 .timeBandFrontEnd {
     margin: 0;
-    background-color: #303030;;
+    background-color: #303030;
+    ;
     margin-top: 110px;
     min-width: 184px;
     height: 36px;
@@ -127,7 +132,7 @@
     .timeBandBackEnd {
         margin: 0;
         margin-top: 92px;
-        min-width: 140px;
+        width: 140px;
     }
 
     .timeBandFrontEnd {
@@ -138,18 +143,104 @@
     .stagesAndTimeContainer {
         margin-right: 30px;
     }
+
     .stagesAndTimeContainer:last-child {
         margin-right: 0px;
     }
 
     .stagesAndTimeOfTheDiploma {
-       margin-top: 75px;
+        margin-top: 75px;
     }
 
     .descriptionOfTheDiploma {
         margin-top: 22px;
         font-size: 12px;
         line-height: 18px;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+    .descriptionContainer {
+        margin: 0;
+        width: 284px;
+        justify-content: center;
+        flex-direction: column;
+        
+    }
+
+    .ProjectContainer {
+        padding: 0;
+        margin: 0;
+        margin-right: 18px;
+        margin-left: 18px;
+        
+    }
+
+    .AboutProject {
+        margin: 0;
+        height: 641px;
+    }
+
+    .stagesAndTimeContainer {
+        margin: 0;
+    }
+
+    .ProjectHeadingContainer {
+        padding-top: 70px;
+        display: flex;
+        width: 292px;
+    }
+
+    .timeBandBackEnd {
+        margin: 0;
+        margin-top: 57px;
+        width: 100px;
+    }
+
+    .timeBandFrontEnd {
+        margin: 0;
+        margin-top: 57px;
+        width: 184px;
+    }
+
+    .ProjectHeading {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .stagesAndTimeOfTheDiploma {
+        font-size: 18px;
+        margin-top: 64px;
+    }
+
+    .descriptionOfTheDiploma {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 16px;
+    }
+
+    .termBackEnd {
+        padding-top: 11px;
+        font-size: 11px;
+    }
+
+    .termfrontEnd {
+        padding-top: 11px;
+        font-size: 11px;
+    }
+
+    .stageName {
+        font-size: 11px;
+        margin-top: 10px;
+    }
+
+    .timeContainerBackEnd {
+        flex: none;
+    }
+
+    .timeContainerFrontEnd {
+        flex: none;
     }
 
 }

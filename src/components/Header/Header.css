@@ -28,11 +28,11 @@
     text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     background-color: transparent;
     border: none;
-    margin-right: 30px;
+    margin-right: 35px;
     color: #FFFFFF;
 }
 
-.mainAuthorizeButton{
+.mainAuthorizeButton {
     width: 76px;
     height: 32px;
     border: none;
@@ -55,6 +55,24 @@
     }
 
     .mainAuthorizeButton {
-        margin-right: 30px; 
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .headerLogo {
+        margin-left: 14px;
+    }
+
+    .mainRegisterButton {
+        margin-right: 14px;
+        font-size: 10px;
+    }
+
+    .mainAuthorizeButton {
+        margin-right: 14px;
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
     }
 }

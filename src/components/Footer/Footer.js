@@ -10,7 +10,7 @@ export default function Footer() {
                 </p>
                 <div className='footerLinkAndYearContainer'>
                     <p className='projectYear'>© 2023</p>
-                    <div>
+                    <div className='linkContainerFooter'>
                     <a className='praktikumLink' href='https://practicum.yandex.ru'>Яндекс.Практикум</a>
                     <a className='ghLink' href='https://github.com/IlyaKotkov/movies-explorer-frontend'>Github</a>
                     </div>
