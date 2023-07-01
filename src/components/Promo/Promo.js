@@ -3,11 +3,13 @@ import './Promo.css'
 
 export default function Promo() {
     return (
-        
+
         <section className="Promo">
-            <h1 className="promoText">Учебный проект студента факультета Веб-разработки.</h1>
-            <img className="promoImage" src={imagePromo} alt="Рисунок-баннер проекта пересекающиеся круги"/>
+            <div className="Promo__Container">
+                <h1 className="Promo__Text">Учебный проект студента факультета Веб-разработки.</h1>
+                <img className="Promo__Image" src={imagePromo} alt="Рисунок-баннер проекта пересекающиеся круги" />
+            </div>
         </section>
-        
+
     )
 }

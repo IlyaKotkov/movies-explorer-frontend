@@ -1,27 +1,28 @@
 .AboutMe {
+    margin: 0 auto;
     background-color: #202020;
     height: 650px;
 }
 
-.descriptionStudentContainer {
+.AboutMe__descriptionStudentContainer {
     margin: 0;
     display: flex;
     justify-content: space-between;
 }
 
-.photoMe {
+.AboutMe__photoMe {
     width: 270px;
     height: 327px;
     border-radius: 10px;
     background: lightgray 50% / cover no-repeat;
 }
 
-.descriptionStudent {
+.AboutMe__descriptionStudent {
     margin: 0;
     margin-top: 66px;
 }
 
-.nameStudent {
+.AboutMe__nameStudent {
     margin: 0;
     font-weight: 400;
     margin-bottom: 18px;
@@ -32,7 +33,7 @@
     min-width: 292px;
 }
 
-.descriptionMe {
+.AboutMe__descriptionMe {
     margin: 0;
     color: #FFF;
     font-weight: 400;
@@ -41,7 +42,7 @@
     line-height: 20px;
 }
 
-.aboutTheStudent {
+.AboutMe__aboutTheStudent {
     margin: 0;
     margin-top: 26px;
     margin-bottom: 96px;
@@ -53,7 +54,7 @@
     line-height: 22px;
 }
 
-.linkGitHub {
+.AboutMe__linkGitHub {
     color: #FFF;
     font-weight: 400;
     font-size: 14px;
@@ -62,36 +63,36 @@
 }
 
 @media screen and (max-width: 768px) {
-    .aboutTheStudent {
+    .AboutMe__aboutTheStudent {
         width: 364px;
     }
 
-    .photoMe {
+    .AboutMe__photoMe {
         width: 255px;
         height: 307px;
     }
 
-    .nameStudent {
+    .AboutMe__nameStudent {
         font-size: 40px;
         line-height: 40px;
         letter-spacing: -1.6px;
         margin-bottom: 16px;
     }
 
-    .descriptionMe {
+    .AboutMe__descriptionMe {
         font-size: 12px;
         font-weight: 500;
         line-height: 18px;
     }
 
-    .aboutTheStudent {
+    .AboutMe__aboutTheStudent {
         margin-top: 20px;
         margin-bottom: 86px;
         font-size: 12px;
         line-height: 18px;
     }
 
-    .AboutMe {
+    .AboutMe__AboutMe {
         height: 603px;
     }
 
@@ -100,40 +101,40 @@
             height: 850px;
         }
 
-        .aboutTheStudent {
+        .AboutMe__aboutTheStudent {
             width: 292px;
         }
 
-        .descriptionStudentContainer {
+        .AboutMe__descriptionStudentContainer {
             margin: 0;
             width: 284px;
             display: flex;
             flex-direction: column-reverse;
         }
 
-        .photoMe {
+        .AboutMe__photoMe {
             width: 292px;
             height: 352px;
             margin-top: 60px;
         }
 
-        .descriptionStudent {
+        .AboutMe__descriptionStudent {
             margin: 0;
         }
 
-        .nameStudent {
+        .AboutMe__nameStudent {
             margin-top: 33px;
             font-size: 30px;
             letter-spacing: -1.2px;
         }
 
-        .aboutTheStudent {
+        .AboutMe__aboutTheStudent {
             font-size: 11px;
             font-family: Inter;
             line-height: 16px;
         }
 
-        .descriptionMe {
+        .AboutMe__descriptionMe {
             font-size: 11px;
             font-weight: 500;
             line-height: 16px;

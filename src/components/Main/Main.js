@@ -10,9 +10,13 @@ export default function Main() {
     return (
         <>
         <Header>
-            <div className="headerContainer">
-                <button className='mainRegisterButton'>Регистрация</button>
-                <button className='mainAuthorizeButton'>Войти</button>
+            <div className="Header__Container">
+                <a href="/signup">
+                    <button className='Header__mainRegisterButton'>Регистрация</button>
+                </a>
+                <a href="/signin">
+                    <button className='Header__mainAuthorizeButton'>Войти</button>
+                </a>
             </div>
         </Header>
         <Promo />
