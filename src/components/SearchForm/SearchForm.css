@@ -1,0 +1,109 @@
+.SearchForm {
+    height: 248px;
+}
+
+.SearchForm__container {
+    margin: 0;
+    display: flex;
+    margin-left: 70px;
+    margin-right: 70px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid #424242;
+    padding-bottom: 70px;
+}
+
+.SearchForm__inputContainer {
+    margin-top: 60px;
+    position: relative;
+    width: 1140px;
+}
+
+.SearchForm__input {
+    border: none;
+    width: 1117px;
+    height: 46px;
+    border-radius: 40px;
+    background: #2F2F2F;
+    padding-left: 22px;
+    color: #8B8B8B;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.SearchForm__searchButton {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 80px;
+    height: 34px;
+    border: none;
+    border-radius: 100px;
+    background-color: #4285F4;
+    color: white;
+}
+
+.SearchForm__checkBoxContainer {
+    margin: 0;
+    margin-top: 39px;
+    display: inline-block;
+}
+
+.SearchForm__checkBox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    appearance: none;
+}
+
+.SearchForm__typeMovie {
+    margin: 0;
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+
+    display: inline-block;
+    position: relative;
+    padding-left: 47px;
+}
+
+.SearchForm__typeMovie::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 20px;
+    background-color: white;
+    border-radius: 18px;
+    transition: background-color .3s;
+}
+
+.SearchForm__typeMovie::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #3DDC84;
+    left: 3px;
+    top: 3px;
+    transition: background-color .3s, left .3s;
+}
+
+.SearchForm__checkBox:checked+.SearchForm__typeMovie::before {
+    background-color: #3DDC84;
+}
+
+.SearchForm__checkBox:checked+.SearchForm__typeMovie::after {
+    background-color: white;
+    left: 18px;
+}

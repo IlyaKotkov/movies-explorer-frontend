@@ -1,6 +1,43 @@
+import Header from "../Header/Header"
+import logo from "../../images/logo.png"
+import "./Profile.css"
+
 export default function Profile() {
     return (
         <>
+            <Header>
+                <div className="Header__moviesContainer">
+                    <div className="Header__moviesLinkContainer">
+                        <a href="/">
+                            <img
+                                className="Header__Logo"
+                                src={logo}
+                                alt="Логотип сайта movies-explorer"
+                            />
+                        </a>
+                        <a href="/movies" className="Header__movies">Фильмы</a>
+                        <a href="/saved-movies" className="Header__movies">Сохранённые фильмы</a>
+                    </div>
+                    <a href="/profile">
+                        <button className="Header__accountButton">Аккаунт</button>
+                    </a>
+                </div>
+            </Header>
+            <section className="Profile">
+                <div className="Profile__container">
+                    <h1 className="Profile__heading">Привет, Илья!</h1>
+                    <div className="Profile__userInfoContainer">
+                        <p className="Profile__infoUser">Имя</p>
+                        <p className="Profile__infoUser">Илья</p>
+                    </div>
+                    <div className="Profile__userInfoContainer">
+                        <p className="Profile__infoUser">E-mail</p>
+                        <p className="Profile__infoUser">MopsBox2552@yandex.ru</p>
+                    </div>
+                    <button className="Profile__editButton">Редактировать</button>
+                    <button className="Profile__exitButton">Выйти из аккаунта</button>
+                </div>
+            </section>
         </>
     )
 }
