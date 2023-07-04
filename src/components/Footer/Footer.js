@@ -11,8 +11,8 @@ export default function Footer() {
                 <div className='Footer__LinkAndYearContainer'>
                     <p className='Footer__projectYear'>© 2023</p>
                     <div className='Footer__linkContainerFooter'>
-                    <a className='Footer__praktikumLink' href='https://practicum.yandex.ru'>Яндекс.Практикум</a>
-                    <a className='Footer__ghLink' href='https://github.com/IlyaKotkov/movies-explorer-frontend'>Github</a>
+                    <a className='Footer__praktikumLink' href='https://practicum.yandex.ru'  rel="noreferrer"  target="_blank">Яндекс.Практикум</a>
+                    <a className='Footer__ghLink' href='https://github.com/IlyaKotkov/movies-explorer-frontend'  rel="noreferrer"  target="_blank">Github</a>
                     </div>
                 </div>
             </div>
