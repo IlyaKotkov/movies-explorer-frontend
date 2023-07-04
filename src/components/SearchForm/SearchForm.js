@@ -1,4 +1,5 @@
 import './SearchForm.css'
+import findImg from '../../images/find.png'
 
 export default function SearchForm() {
     return (
@@ -6,7 +7,9 @@ export default function SearchForm() {
             <div className="SearchForm__container">
                 <div className='SearchForm__inputContainer'>
                 <input type="text" placeholder='Фильм' className="SearchForm__input" />
-                <button className="SearchForm__searchButton">&#128269;</button> 
+                <button className="SearchForm__searchButton">
+                        <img className='SearchForm__searchImg' src={findImg} alt='значок поиска'/>
+                    </button> 
                 </div>
                 <label className="SearchForm__checkBoxContainer" for="checkbox">
                     <input className="SearchForm__checkBox" type="checkbox" id='checkbox'/>

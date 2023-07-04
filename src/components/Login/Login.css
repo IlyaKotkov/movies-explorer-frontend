@@ -88,6 +88,12 @@
     border-radius: 3px;
     background: #4285F4;
     height: 45px;
+    cursor: pointer;
+}
+
+.Authorize__Button:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
 }
 
 .Authorize__unauthorizeText {
@@ -101,13 +107,19 @@
     text-align: center;
 }
 
-.Authorize__linkToRegister {
+.Authorize__link {
     color: #4285F4;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.Authorize__link:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
 }
 
 @media screen and (max-width: 320px) {

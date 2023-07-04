@@ -15,7 +15,7 @@
 }
 
 .SearchForm__inputContainer {
-    margin-top: 60px;
+    margin-top: 78px;
     position: relative;
     width: 1140px;
 }
@@ -23,7 +23,7 @@
 .SearchForm__input {
     border: none;
     width: 1117px;
-    height: 46px;
+    height: 45px;
     border-radius: 40px;
     background: #2F2F2F;
     padding-left: 22px;
@@ -34,16 +34,49 @@
     line-height: 17px;
 }
 
+@media screen and (max-width: 768px) {
+    .SearchForm__input {
+        width: 684px;
+        font-size: 11px;
+    }
+
+    .SearchForm__inputContainer {
+        width: 708px;
+    }
+
+    .SearchForm__container {
+        padding-bottom: 52px;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .SearchForm__input {
+        width: 270px;
+    }
+
+    .SearchForm__inputContainer {
+        width: 292px;
+    }
+
+    .SearchForm__container {
+        padding-bottom: 49px;
+    }
+}
+
 .SearchForm__searchButton {
     position: absolute;
-    right: 6px;
-    top: 6px;
-    width: 80px;
-    height: 34px;
+    right: 0px;
+    top: 6px; 
+    background-color: transparent;
     border: none;
-    border-radius: 100px;
-    background-color: #4285F4;
-    color: white;
+    cursor: pointer;
+}
+
+.SearchForm__searchButton:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
 }
 
 .SearchForm__checkBoxContainer {
@@ -58,6 +91,7 @@
     width: 0;
     height: 0;
     appearance: none;
+    cursor: pointer;
 }
 
 .SearchForm__typeMovie {
@@ -81,9 +115,10 @@
     top: 0;
     width: 36px;
     height: 20px;
-    background-color: white;
+    background-color: #343434;
     border-radius: 18px;
     transition: background-color .3s;
+    cursor: pointer;
 }
 
 .SearchForm__typeMovie::after {
@@ -93,17 +128,29 @@
     width: 15px;
     height: 15px;
     border-radius: 15px;
-    background-color: #3DDC84;
+    background-color: #A0A0A0;
     left: 3px;
     top: 3px;
     transition: background-color .3s, left .3s;
+    cursor: pointer;
 }
 
 .SearchForm__checkBox:checked+.SearchForm__typeMovie::before {
     background-color: #3DDC84;
+    cursor: pointer;
 }
 
 .SearchForm__checkBox:checked+.SearchForm__typeMovie::after {
     background-color: white;
     left: 18px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+    .SearchForm__typeMovie  {
+        font-size: 11px;
+    }
+    .SearchForm__checkBoxContainer {
+        margin-top: 43px;
+    }
 }

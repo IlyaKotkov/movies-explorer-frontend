@@ -1,6 +1,6 @@
 .Profile {
-    min-height: 100vh;
     margin: 0 auto;
+    min-height: 100vh;
 }
 
 .Profile__container {
@@ -58,6 +58,12 @@
     line-height: normal;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.Profile__editButton:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
 }
 
 .Profile__exitButton {
@@ -70,4 +76,46 @@
     line-height: normal;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.Profile__exitButton:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+@media screen and (max-width: 768px) {
+    .Profile__container {
+        padding-top: 236px;
+        padding-bottom: 269px;
+        max-width: calc(100% - 2*179px);
+    }
+    .Profile__heading {
+        margin-bottom: 95px;
+    }
+    .Profile__editButton {
+        margin-top: 208px;
+    }
+    .Profile__exitButton {
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Profile__container {
+        padding-top: 70px;
+        padding-bottom: 269px;
+        max-width: calc(100% - 2*30px);
+    }
+    .Profile__heading {
+        margin-bottom: 80px;
+    }
+    .Profile__editButton {
+        margin-top: 378px;
+        font-size: 12px;
+    }
+    .Profile__exitButton {
+        margin-top: 15px;
+        font-size: 12px;
+    }
 }

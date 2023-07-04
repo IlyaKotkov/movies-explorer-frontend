@@ -1,6 +1,7 @@
 import Header from "../Header/Header"
 import logo from "../../images/logo.png"
 import "./Profile.css"
+import SideBar from "../SideBar/SideBar"
 
 export default function Profile() {
     return (
@@ -15,12 +16,13 @@ export default function Profile() {
                                 alt="Логотип сайта movies-explorer"
                             />
                         </a>
-                        <a href="/movies" className="Header__movies">Фильмы</a>
-                        <a href="/saved-movies" className="Header__movies">Сохранённые фильмы</a>
+                        <a href="/movies" className="Header__movies Header__moviesHidden">Фильмы</a>
+                        <a href="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</a>
                     </div>
                     <a href="/profile">
-                        <button className="Header__accountButton">Аккаунт</button>
+                        <button className="Header__accountButton Header__accountButtonHidden">Аккаунт</button>
                     </a>
+                    <SideBar />
                 </div>
             </Header>
             <section className="Profile">

@@ -52,6 +52,16 @@
 
 }
 
+.Footer__praktikumLink:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+.Footer__ghLink:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
 @media screen and (max-width: 320px) {
     .Footer__Container {
         margin-left: 10px;
@@ -73,6 +83,8 @@
         padding-top: 82px;
         padding-bottom: 21px;
         font-size: 12px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .Footer__LinkAndYearContainer {
@@ -100,4 +112,5 @@
         font-size: 12px;
         margin-top: 13px;
     }
+
 }

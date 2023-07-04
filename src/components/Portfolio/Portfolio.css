@@ -44,6 +44,11 @@
     justify-content: space-between;
 }
 
+.Portfolio__linkContainer:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
 .Portfolio__linkContainer:last-child {
     border: none;
     margin-bottom: 0;

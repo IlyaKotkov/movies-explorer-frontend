@@ -24,7 +24,7 @@ export default function Register() {
                     <button className="Authorize__Button">Зарегестрироваться</button>
                 </a>
                 <p className="Authorize__unauthorizeText">Уже зарегестрированы?
-                    <a className="Authorize__linkToRegister" href="/signin"> Войти</a>
+                    <a className="Authorize__link" href="/signin"> Войти</a>
                 </p>
             </div>
         </section>

@@ -60,6 +60,12 @@
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.AboutMe__linkGitHub:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
 }
 
 @media screen and (max-width: 768px) {
