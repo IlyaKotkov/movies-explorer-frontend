@@ -68,6 +68,12 @@
     opacity: .6;
 }
 
+@media screen and (max-width: 1000px) {
+    .AboutMe__aboutTheStudent {
+        width: 400px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .AboutMe__aboutTheStudent {
         width: 364px;
@@ -102,13 +108,51 @@
         height: 603px;
     }
 
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 720px) {
+
         .AboutMe {
             height: 850px;
         }
 
+        .AboutMe__descriptionStudentContainer {
+            margin: 0;
+            flex-direction: column-reverse;
+        }
+
+    }
+
+    @media screen and (max-width: 720px) {
+
         .AboutMe__aboutTheStudent {
-            width: 292px;
+            width: 300px;
+        }
+
+
+    }
+
+    @media screen and (max-width: 400px) {
+        .AboutMe {
+            height: 985px;
+        }
+
+        .AboutMe__aboutTheStudent {
+            width: 200px;
+            font-size: 11px;
+            font-family: Inter;
+            line-height: 16px;
+        }
+
+        .AboutMe__nameStudent {
+            margin-top: 33px;
+            font-size: 30px;
+            letter-spacing: -1.2px;
+            min-width: 0px;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .AboutMe {
+            height: 850px;
         }
 
         .AboutMe__descriptionStudentContainer {
@@ -126,12 +170,6 @@
 
         .AboutMe__descriptionStudent {
             margin: 0;
-        }
-
-        .AboutMe__nameStudent {
-            margin-top: 33px;
-            font-size: 30px;
-            letter-spacing: -1.2px;
         }
 
         .AboutMe__aboutTheStudent {

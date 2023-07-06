@@ -17,7 +17,7 @@
 .SearchForm__inputContainer {
     margin-top: 78px;
     position: relative;
-    width: 1140px;
+    max-width: 1140px;
 }
 
 .SearchForm__input {
@@ -34,6 +34,18 @@
     line-height: 17px;
 }
 
+@media screen and (max-width: 1142px) {
+    .SearchForm__input {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 826px) {
+    .SearchForm__input {
+        width: 700px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .SearchForm__input {
         width: 684px;
@@ -48,6 +60,26 @@
         padding-bottom: 52px;
         margin-left: 14px;
         margin-right: 14px;
+    }
+}
+
+@media screen and (max-width: 826px) {
+    .SearchForm__inputContainer{
+        width: 522px;
+    }
+
+    .SearchForm__input {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 526px) {
+    .SearchForm__inputContainer{
+        width: 312px;
+    }
+
+    .SearchForm__input {
+        width: 290px;
     }
 }
 

@@ -5,12 +5,12 @@ export default function SearchForm() {
     return (
         <section className="SearchForm">
             <div className="SearchForm__container">
-                <div className='SearchForm__inputContainer'>
+                <form className='SearchForm__inputContainer'>
                 <input type="text" placeholder='Фильм' className="SearchForm__input" />
                 <button className="SearchForm__searchButton">
                         <img className='SearchForm__searchImg' src={findImg} alt='значок поиска'/>
                     </button> 
-                </div>
+                </form>
                 <label className="SearchForm__checkBoxContainer" for="checkbox">
                     <input className="SearchForm__checkBox" type="checkbox" id='checkbox'/>
                     <span className="SearchForm__typeMovie">Короткометражки</span>

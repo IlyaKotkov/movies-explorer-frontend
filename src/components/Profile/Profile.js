@@ -37,7 +37,9 @@ export default function Profile() {
                         <p className="Profile__infoUser">MopsBox2552@yandex.ru</p>
                     </div>
                     <button className="Profile__editButton">Редактировать</button>
+                    <a href="/signin">
                     <button className="Profile__exitButton">Выйти из аккаунта</button>
+                    </a>
                 </div>
             </section>
         </>

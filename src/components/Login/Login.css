@@ -1,15 +1,15 @@
 .Authorize {
+    margin: 0 auto;
     background: #202020;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
 }
 
 .Authorize__Container {
-    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 396px;
     padding-top: 70px;
     padding-bottom: 70px;
 }
@@ -22,26 +22,19 @@
     align-items: flex-start;
 }
 
+.Authorize__ButtonLink {
+    width: 100%;
+}
+
 .Authorize__InputPassword {
-    width: 396px;
-    margin: 0;
-    border: none;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    background: #2F2F2F;
-    height: 46px;
     color: #EE3465;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 
 .Authorize__Heaing {
     margin: 0;
     margin-top: 40px;
     margin-bottom: 40px;
-    width: 396px;
+    width: 100%;
     color: #FFF;
     font-size: 24px;
     font-style: normal;
@@ -51,11 +44,11 @@
 
 .Authorize__inputContainer {
     margin: 0;
-    width: 396px;
+    max-width: 396px;
 }
 
 .Authorize__Text {
-    width: 396px;
+    max-width: 396px;
     margin: 0;
     margin-bottom: 10px;
     color: #8B8B8B;
@@ -67,7 +60,7 @@
 
 
 .Authorize__Input {
-    width: 396px;
+    width: 100%;
     margin: 0;
     border: none;
     margin-bottom: 20px;
@@ -82,8 +75,7 @@
 }
 
 .Authorize__Button {
-    margin-top: 179px;
-    width: 396px;
+    width: 100%;
     border: none;
     border-radius: 3px;
     background: #4285F4;
@@ -98,7 +90,7 @@
 
 .Authorize__unauthorizeText {
     margin-top: 16px;
-    width: 396px;
+    width: 100%;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -122,12 +114,32 @@
     opacity: .6;
 }
 
+.Authorize__ButtonLink {
+    margin-top: 179px;
+}
+
+@media screen and (max-width: 768px) {
+    .Authorize__Container {
+        width: 396px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .Authorize__Container {
+        width: 260px;
+    }
+}
+
 @media screen and (max-width: 320px) {
-    .Authorize__Logo {
-        text-align: center;
+
+    .Authorize__mainLink {
+        margin: 0;
+        display: block;
+        width: 38px;
     }
 
     .Authorize__Container {
+        align-items: center;
         padding-top: 56px;
         padding-bottom: 0px;
     }
@@ -135,6 +147,7 @@
     .Authorize__Heaing {
         width: 260px;
         margin-top: 50px;
+        margin-bottom: 0px;
         text-align: center;
     }
 
@@ -149,22 +162,33 @@
 
 
     .Authorize__Input {
+        padding: 0;
         width: 260px;
     }
 
     .Authorize__Button {
-        width: 260px;
-        margin-top: 232px;
+        width: 100%;
+    }
+
+    .Authorize__ButtonLink {
+        margin-top: 267px;
     }
 
     .Authorize__unauthorizeText {
         width: 260px;
         font-size: 12px;
-        ;
     }
 
     .Authorize__linkToRegister {
         font-size: 12px;
+    }
+
+    .Authorize__link {
+        font-size: 12px;
+    }
+
+    .Authorize__unauthorizeText { 
+        margin-top: 14px;
     }
 
 }

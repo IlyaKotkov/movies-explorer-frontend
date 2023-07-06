@@ -25,10 +25,11 @@
     .MoviesCardList__container {
         grid-template-columns: repeat(auto-fit, 300px);
         gap: 16px 0px;
+        padding-top: 40px;
     }
 
     .MoviesCardList {
-        padding-top: 40px;
+        padding-top: 0px;
     }
 }
 
@@ -68,12 +69,5 @@
 
     .MoviesCardList__downloadMoreButton {
        width: 240px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .MoviesCardList__downloadMoreButton {
-        grid-template-columns: repeat(auto-fit, 342px);
-        gap: 35px 24px;
     }
 }

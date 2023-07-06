@@ -5,7 +5,7 @@
 }
 
 .Techs__Container {
-    margin: 0 ;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,6 +58,23 @@
 
 .Techs__enumeration:last-child {
     margin-right: 0px;
+}
+
+@media screen and (max-width: 700px) {
+    .Techs {
+        height: 832px;
+    }
+
+    .Techs__list {
+        display: grid;
+        gap: 10px;
+        width: 200px;
+        grid-template-columns: repeat(auto-fit, 87px);
+    }
+
+    .Techs__Discription {
+        width: 300px;
+    }
 }
 
 @media screen and (max-width: 768px) {

@@ -1,5 +1,6 @@
 import logo from "../../images/logo.png"
 
+
 export default function Register() {
     return (
         <section className="Authorize">
@@ -14,11 +15,11 @@ export default function Register() {
                 <h1 className="Authorize__Heaing">Рады видеть!</h1>
                 <div className="Authorize__inputContainer">
                     <p className="Authorize__Text">Имя</p>
-                    <input type="text" className="Authorize__Input" />
+                    <input type="text" required className="Authorize__Input" />
                     <p className="Authorize__Text">E-mail</p>
-                    <input type="text" className="Authorize__Input" />
+                    <input type="email" required className="Authorize__Input" />
                     <p className="Authorize__Text">Password</p>
-                    <input type="password" className="Authorize__Input" />
+                    <input type="password" required className="Authorize__Input" />
                 </div>
                 <a href="/signin">
                     <button className="Authorize__Button">Зарегестрироваться</button>
