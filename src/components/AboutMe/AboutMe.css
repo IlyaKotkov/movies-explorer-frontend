@@ -1,0 +1,193 @@
+.AboutMe {
+    margin: 0 auto;
+    background-color: #202020;
+    height: 650px;
+}
+
+.AboutMe__descriptionStudentContainer {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.AboutMe__photoMe {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    background: lightgray 50% / cover no-repeat;
+}
+
+.AboutMe__descriptionStudent {
+    margin: 0;
+    margin-top: 66px;
+}
+
+.AboutMe__nameStudent {
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 18px;
+    color: #FFF;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -2px;
+    min-width: 292px;
+}
+
+.AboutMe__descriptionMe {
+    margin: 0;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.AboutMe__aboutTheStudent {
+    margin: 0;
+    margin-top: 26px;
+    margin-bottom: 96px;
+    width: 600px;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Inter;
+    line-height: 22px;
+}
+
+.AboutMe__linkGitHub {
+    color: #FFF;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.AboutMe__linkGitHub:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+@media screen and (max-width: 1000px) {
+    .AboutMe__aboutTheStudent {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .AboutMe__aboutTheStudent {
+        width: 364px;
+    }
+
+    .AboutMe__photoMe {
+        width: 255px;
+        height: 307px;
+    }
+
+    .AboutMe__nameStudent {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -1.6px;
+        margin-bottom: 16px;
+    }
+
+    .AboutMe__descriptionMe {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+    }
+
+    .AboutMe__aboutTheStudent {
+        margin-top: 20px;
+        margin-bottom: 86px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .AboutMe__AboutMe {
+        height: 603px;
+    }
+
+    @media screen and (max-width: 720px) {
+
+        .AboutMe {
+            height: 850px;
+        }
+
+        .AboutMe__descriptionStudentContainer {
+            margin: 0;
+            flex-direction: column-reverse;
+        }
+
+    }
+
+    @media screen and (max-width: 720px) {
+
+        .AboutMe__aboutTheStudent {
+            width: 300px;
+        }
+
+
+    }
+
+    @media screen and (max-width: 400px) {
+        .AboutMe {
+            height: 985px;
+        }
+
+        .AboutMe__aboutTheStudent {
+            width: 292px;
+            font-size: 11px;
+            font-family: Inter;
+            line-height: 16px;
+        }
+
+        .AboutMe__nameStudent {
+            margin-top: 33px;
+            font-size: 30px;
+            letter-spacing: -1.2px;
+            min-width: 0px;
+        }
+
+        .AboutMe__descriptionStudentContainer {
+           align-items: center;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .AboutMe {
+            height: 850px;
+        }
+
+        .AboutMe__descriptionStudentContainer {
+            margin: 0;
+            width: 284px;
+            align-items:baseline;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .AboutMe__photoMe {
+            width: 292px;
+            height: 352px;
+            margin-top: 60px;
+        }
+
+        .AboutMe__descriptionStudent {
+            margin: 0;
+            width: 292px;
+        }
+
+        .AboutMe__aboutTheStudent {
+            font-size: 11px;
+            font-family: Inter;
+            line-height: 16px;
+        }
+
+        .AboutMe__descriptionMe {
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 16px;
+        }
+    }
+}

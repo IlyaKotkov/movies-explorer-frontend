@@ -1,0 +1,99 @@
+.SideBar__wrapper {
+    position: relative;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.SideBar__menuSideBar {
+    position: fixed;
+    right: 0; top: 0;
+    display: flex;
+    height: 100vh;
+    width: 520px;
+    align-items: center;
+    justify-content: center;
+    background-color: #424242;
+    transition: 0.5s;
+    transform: translatex(100%);
+}
+
+@media screen and (max-width: 640px) {
+    .SideBar__menuSideBar {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .SideBar__menuSideBar {
+        width: 150px;
+    }
+}
+
+
+.SideBar__menuOverlay_visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+.SideBar__menu_active {
+    transform: translateX(0%);
+}
+.SideBar__menu-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.SideBar__menu-btn-header {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 12px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.SideBar__menu-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    cursor: pointer;
+}
+
+.SideBar__menu-btn:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+.SideBar__menu-list-container {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+@media screen and (min-width: 769px) {   
+    .SideBar__wrapper {
+        display: none;
+    }
+    
+    .SideBar__menu-btn-header {
+        display: none;
+    }
+
+    .SideBar__menuOverlay {
+        display: none;
+    }
+}

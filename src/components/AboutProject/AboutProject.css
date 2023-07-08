@@ -1,0 +1,264 @@
+.AboutProject {
+    background-color: #202020;
+}
+
+.ProjectContainer {
+    margin: 0 auto;
+    min-height: 585px;
+    max-width: 1280px;
+    padding-top: 110px;
+    padding-right: 70px;
+    padding-bottom: 110px;
+    padding-left: 70px;
+}
+
+.ProjectHeadingContainer {
+    margin: 0;
+    border-bottom: 1px solid #DADADA;
+}
+
+.ProjectHeading {
+    margin: 0;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: -0.88px;
+    margin-bottom: 30px;
+}
+
+.AboutProject__descriptionContainer {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.AboutProject__stagesAndTimeOfTheDiploma {
+    margin: 0;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.8px;
+    margin-top: 70px;
+}
+
+.AboutProject__descriptionOfTheDiploma {
+    margin: 0;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 26px;
+}
+
+.AboutProject__stagesAndTimeContainer {
+    margin: 0;
+    min-width: 284px;
+    margin-right: 50px;
+}
+
+.AboutProject__stagesAndTimeContainer:last-child {
+    margin-right: 0px;
+}
+
+.AboutProject__timeBandBackEnd {
+    margin: 0;
+    background-color: #3DDC84;
+    margin-top: 110px;
+    min-width: 100px;
+    height: 36px;
+}
+
+.AboutProject__timeBandFrontEnd {
+    margin: 0;
+    background-color: #303030;
+    ;
+    margin-top: 110px;
+    min-width: 184px;
+    height: 36px;
+}
+
+.AboutProject__termBackEnd {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 9px;
+}
+
+.AboutProject__termfrontEnd {
+    margin: 0;
+    color: #FFF;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 9px;
+}
+
+.AboutProject__stripeContainer {
+    margin: 0;
+    display: flex;
+    text-align: center;
+}
+
+.AboutProject__stageName {
+    margin: 0;
+    margin-top: 13px;
+    color: #8B8B8B;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+}
+
+.AboutProject__timeContainerBackEnd {
+    flex: 2 1;
+}
+
+.AboutProject__timeContainerFrontEnd {
+    flex: 8 1;
+}
+
+@media screen and (max-width: 720px) {
+    .AboutProject__descriptionContainer {
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ProjectContainer {
+        margin: 0;
+        padding-top: 90px;
+        padding-right: 50px;
+        padding-bottom: 90px;
+        padding-left: 50px;
+    }
+
+    .AboutProject__timeBandBackEnd {
+        margin: 0;
+        margin-top: 92px;
+        width: 140px;
+    }
+
+    .AboutProject__timeBandFrontEnd {
+        margin: 0;
+        margin-top: 92px;
+    }
+
+    .AboutProject__stagesAndTimeContainer {
+        margin-right: 30px;
+    }
+
+    .AboutProject__stagesAndTimeContainer:last-child {
+        margin-right: 0px;
+    }
+
+    .AboutProject__stagesAndTimeOfTheDiploma {
+        margin-top: 75px;
+    }
+
+    .AboutProject__descriptionOfTheDiploma {
+        margin-top: 22px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+}
+
+@media screen and (max-width: 380px) {
+    .AboutProject__timeBandFrontEnd {
+        min-width: 120px;
+    }
+
+    .AboutProject__timeContainerFrontEnd {
+        width: 120px;
+    }
+
+    .AboutProject__stagesAndTimeContainer {
+        margin: 0;
+    }
+
+    .ProjectContainer {
+        padding: 0;
+        margin: 0;
+        padding-top: 70px;
+        margin-right: 18px;
+        margin-left: 18px;
+
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .AboutProject__descriptionContainer {
+        margin: 0;
+        width: 284px;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    .AboutProject {
+        margin: 0;
+        height: 641px;
+    }
+
+    .AboutProject__ProjectHeadingContainer {
+        padding-top: 70px;
+        display: flex;
+        width: 292px;
+    }
+
+    .AboutProject__timeBandBackEnd {
+        margin: 0;
+        margin-top: 57px;
+        width: 100px;
+    }
+
+    .AboutProject__timeBandFrontEnd {
+        margin: 0;
+        margin-top: 57px;
+        width: 184px;
+    }
+
+    .AboutProject__ProjectHeading {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .AboutProject__stagesAndTimeOfTheDiploma {
+        font-size: 18px;
+        margin-top: 64px;
+    }
+
+    .AboutProject__descriptionOfTheDiploma {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 16px;
+    }
+
+    .AboutProject__termBackEnd {
+        padding-top: 11px;
+        font-size: 11px;
+    }
+
+    .AboutProject__termfrontEnd {
+        padding-top: 11px;
+        font-size: 11px;
+    }
+
+    .AboutProject__stageName {
+        font-size: 11px;
+        margin-top: 10px;
+    }
+
+    .AboutProject__timeContainerBackEnd {
+        flex: none;
+    }
+
+    .AboutProject__timeContainerFrontEnd {
+        flex: none;
+    }
+
+}

@@ -1,0 +1,202 @@
+.Authorize {
+    margin: 0 auto;
+    background: #202020;
+    min-height: 100vh;
+}
+
+.Authorize__Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 396px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.Authorize__Logo {
+    margin: 0;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.Authorize__ButtonLink {
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #4285F4;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 179px;
+    font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 45px;
+color: white;
+}
+
+.Authorize__InputPassword {
+    color: #EE3465;
+}
+
+.Authorize__Heaing {
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 100%;
+    color: #FFF;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.Authorize__inputContainer {
+    margin: 0;
+    max-width: 396px;
+}
+
+.Authorize__Text {
+    max-width: 396px;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #8B8B8B;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.Authorize__Input {
+    width: 100%;
+    margin: 0;
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #2F2F2F;
+    color: #FFF;
+    height: 46px;
+}
+
+.Authorize__Input:last-child {
+    margin-bottom: 0px;
+}
+
+.Authorize__Button {
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #4285F4;
+    height: 45px;
+    cursor: pointer;
+}
+
+.Authorize__Button:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+.Authorize__unauthorizeText {
+    margin-top: 16px;
+    width: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #8B8B8B;
+    text-align: center;
+}
+
+.Authorize__link {
+    color: #4285F4;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.Authorize__link:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+@media screen and (max-width: 768px) {
+    .Authorize__Container {
+        width: 396px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .Authorize__Container {
+        width: 260px;
+        align-items: center;
+        padding-top: 56px;
+        padding-bottom: 0px;
+    }
+
+    .Authorize__Heaing {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .Authorize__mainLink {
+        margin: 0;
+        display: block;
+        width: 38px;
+    }
+    .Authorize__Heaing {
+        width: 260px;
+        margin-top: 50px;
+        margin-bottom: 0px;
+    }
+
+    .Authorize__inputContainer {
+        width: 260px;
+        margin-top: 80px;
+    }
+
+    .Authorize__Text {
+        width: 260px;
+    }
+
+
+    .Authorize__Input {
+        padding: 0;
+        width: 260px;
+    }
+
+    .Authorize__Button {
+        width: 100%;
+    }
+
+    .Authorize__ButtonLink {
+        margin-top: 267px;
+    }
+
+    .Authorize__unauthorizeText {
+        width: 260px;
+        font-size: 12px;
+    }
+
+    .Authorize__linkToRegister {
+        font-size: 12px;
+    }
+
+    .Authorize__link {
+        font-size: 12px;
+    }
+
+    .Authorize__unauthorizeText { 
+        margin-top: 14px;
+    }
+
+}

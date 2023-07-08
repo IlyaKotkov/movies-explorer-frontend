@@ -1,0 +1,47 @@
+.NotFoundError {
+    height: 100vh;
+}
+
+.NotFoundError__container {
+    margin: 0;
+    padding-top: 246px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.NotFoundError__statusCode {
+    margin: 0;
+    color: #FFF;
+    font-size: 140px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.NotFoundError__statusCodeText {
+    margin: 0;
+    margin-top: 5px;
+    color: #FFF;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.NotFoundError__getBack {
+    margin: 0;
+    margin-top: 184px;
+    color: #4285F4;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-decoration: none;
+}
+
+@media screen and (max-width: 320px) {
+    .NotFoundError {
+        width: 320px;
+    }
+}

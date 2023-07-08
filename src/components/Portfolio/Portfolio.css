@@ -1,0 +1,140 @@
+.Portfolio {
+    background-color: #202020;
+}
+
+.Portfolio__Container {
+    margin: 0 auto;
+    height: 350px;
+    max-width: 1280px;
+    padding-right: 70px;
+    padding-bottom: 125px;
+    padding-left: 70px;
+}
+
+.iconArrow {
+    margin: 0;
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-self: center;
+    margin-right: 5px;
+    margin-top: 7px;
+}
+
+.Portfolio__Heading {
+    margin: 0;
+    color: #8B8B8B;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.Portfolio__GeneralLinkContainer {
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.Portfolio__linkContainer {
+    margin: 0;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    min-width: 292px;
+    height: 69px;
+    border-bottom: 1px solid #424242;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Portfolio__linkContainer:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+.Portfolio__linkContainer:last-child {
+    border: none;
+    margin-bottom: 0;
+}
+
+.Portfolio__projectName {
+    text-decoration: none;
+    font-weight: 400;
+    color: #FFF;
+    display: flex;
+    align-self: center;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: -1.2px;
+}
+
+@media screen and (max-width: 768px) {
+    .Portfolio__Container {
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+
+    .Portfolio__projectName {
+        font-size: 28px;
+        line-height: 50px;
+        letter-spacing: -1.12px;
+    }
+
+    .Portfolio__linkContainer {
+        margin-bottom: 20px;
+        padding-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .Portfolio__projectName {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.72px;
+    }
+
+    .Portfolio__Container {
+        padding: 0;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    .iconArrow {
+        width: 18px;
+        height: 18px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .Portfolio__linkContainer {
+        margin: 0;
+        margin-bottom: 20px;
+        padding-bottom: 19px;
+        width: 292px;
+        height: auto;
+    }
+
+    .Portfolio {
+        margin-top: 52px;
+        height: 274px;
+    }
+
+    .Portfolio__GeneralLinkContainer {
+        width: 292px;
+    }
+
+    .Portfolio__Heading {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .Portfolio__GeneralLinkContainer {
+        margin-top: 40px;
+    }
+
+    .iconArrow {
+        width: 18px;
+        height: 18px;
+    }
+}
