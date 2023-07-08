@@ -18,12 +18,12 @@ export default function Main() {
                         alt="Логотип сайта movies-explorer"
                     />
                     <div className="Header__Container">
-                        <a href="/signup">
-                            <button className='Header__mainRegisterButton'>Регистрация</button>
-                        </a>
-                        <a href="/signin">
-                            <button className='Header__mainAuthorizeButton'>Войти</button>
-                        </a>
+                        
+                        <a href="/signup" className='Header__mainRegisterButton'>Регистрация</a>
+                       
+                        
+                        <a href="/signin" className='Header__mainAuthorizeButton'>Войти</a>
+                        
                     </div>
                 </div>
             </Header>

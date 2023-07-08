@@ -13,15 +13,15 @@ export default function Login() {
                     />
                 </a>
                 <h1 className="Authorize__Heaing">Рады видеть!</h1>
-                <div className="Authorize__inputContainer">
+                <form className="Authorize__inputContainer">
                     <p className="Authorize__Text">E-mail</p>
                     <input type="email" required className="Authorize__Input" />
                     <p className="Authorize__Text">Password</p>
                     <input type="password" required className="Authorize__Input Authorize__InputPassword" />
-                </div>
-                <a className="Authorize__ButtonLink" href="/movies">
-                    <button className="Authorize__Button">Войти</button>
-                </a>
+                </form>
+                
+                <a className="Authorize__ButtonLink" href="/movies">Войти</a>
+
                 <p className="Authorize__unauthorizeText">Еще не зарегестрированы?
                     <a className="Authorize__link" href="/signup"> Регистрация</a>
                 </p>

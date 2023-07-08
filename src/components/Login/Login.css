@@ -23,7 +23,20 @@
 }
 
 .Authorize__ButtonLink {
+    text-align: center;
+    text-decoration: none;
     width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #4285F4;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 179px;
+    font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 45px;
+color: white;
 }
 
 .Authorize__InputPassword {
@@ -114,10 +127,6 @@
     opacity: .6;
 }
 
-.Authorize__ButtonLink {
-    margin-top: 179px;
-}
-
 @media screen and (max-width: 768px) {
     .Authorize__Container {
         width: 396px;
@@ -127,6 +136,13 @@
 @media screen and (max-width: 420px) {
     .Authorize__Container {
         width: 260px;
+        align-items: center;
+        padding-top: 56px;
+        padding-bottom: 0px;
+    }
+
+    .Authorize__Heaing {
+        text-align: center;
     }
 }
 
@@ -137,18 +153,10 @@
         display: block;
         width: 38px;
     }
-
-    .Authorize__Container {
-        align-items: center;
-        padding-top: 56px;
-        padding-bottom: 0px;
-    }
-
     .Authorize__Heaing {
         width: 260px;
         margin-top: 50px;
         margin-bottom: 0px;
-        text-align: center;
     }
 
     .Authorize__inputContainer {

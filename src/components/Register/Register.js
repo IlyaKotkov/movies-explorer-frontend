@@ -13,17 +13,17 @@ export default function Register() {
                     />
                 </a>
                 <h1 className="Authorize__Heaing">Рады видеть!</h1>
-                <div className="Authorize__inputContainer">
+                <form className="Authorize__inputContainer">
                     <p className="Authorize__Text">Имя</p>
                     <input type="text" required className="Authorize__Input" />
                     <p className="Authorize__Text">E-mail</p>
                     <input type="email" required className="Authorize__Input" />
                     <p className="Authorize__Text">Password</p>
-                    <input type="password" required className="Authorize__Input" />
-                </div>
-                <a href="/signin">
-                    <button className="Authorize__Button">Зарегестрироваться</button>
-                </a>
+                    <input type="password" required className="Authorize__Input Authorize__InputPassword" />
+                </form>
+                
+                <a className="Authorize__ButtonLink" href="/signin">Зарегестрироваться</a>
+                
                 <p className="Authorize__unauthorizeText">Уже зарегестрированы?
                     <a className="Authorize__link" href="/signin"> Войти</a>
                 </p>

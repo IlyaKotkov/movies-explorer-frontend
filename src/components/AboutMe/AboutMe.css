@@ -136,7 +136,7 @@
         }
 
         .AboutMe__aboutTheStudent {
-            width: 200px;
+            width: 292px;
             font-size: 11px;
             font-family: Inter;
             line-height: 16px;
@@ -148,6 +148,10 @@
             letter-spacing: -1.2px;
             min-width: 0px;
         }
+
+        .AboutMe__descriptionStudentContainer {
+           align-items: center;
+        }
     }
 
     @media screen and (max-width: 320px) {
@@ -158,6 +162,7 @@
         .AboutMe__descriptionStudentContainer {
             margin: 0;
             width: 284px;
+            align-items:baseline;
             display: flex;
             flex-direction: column-reverse;
         }
@@ -170,6 +175,7 @@
 
         .AboutMe__descriptionStudent {
             margin: 0;
+            width: 292px;
         }
 
         .AboutMe__aboutTheStudent {

@@ -6,7 +6,7 @@ export default function SearchForm() {
         <section className="SearchForm">
             <div className="SearchForm__container">
                 <form className='SearchForm__inputContainer'>
-                <input type="text" placeholder='Фильм' className="SearchForm__input" />
+                <input required pattern='^[а-яА-ЯёЁa-zA-Z0-9]+$' type="text" placeholder='Фильм' className="SearchForm__input" />
                 <button className="SearchForm__searchButton">
                         <img className='SearchForm__searchImg' src={findImg} alt='значок поиска'/>
                     </button> 

@@ -25,9 +25,7 @@ export default function Movies() {
                         <a href="/movies" className="Header__movies Header__moviesHidden">Фильмы</a>
                         <a href="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</a>
                     </div>
-                     <a href="/profile">
-                        <button className="Header__accountButton Header__accountButtonHidden">Аккаунт</button>
-                    </a>  
+                     <a href="/profile" className="Header__accountButton Header__accountButtonHidden">Аккаунт</a> 
                     <SideBar />
                 </div>
             </Header>

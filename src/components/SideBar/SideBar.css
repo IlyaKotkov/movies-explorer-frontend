@@ -92,4 +92,8 @@
     .SideBar__menu-btn-header {
         display: none;
     }
+
+    .SideBar__menuOverlay {
+        display: none;
+    }
 }

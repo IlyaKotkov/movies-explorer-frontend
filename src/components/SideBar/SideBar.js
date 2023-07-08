@@ -16,13 +16,13 @@ export default function SideBar() {
 
     return (
         <>
-            <button type="button" onClick={toggleMenu} className="SideBar__menu-btn-header" id="menu-btn-hed" href="#">
+            <button type="button" onClick={toggleMenu} className="SideBar__menu-btn-header" id="menu-btn-hed" >
                 <img className="SideBar__menuImg" src={menuImg} alt="бургер меню" />
             </button>
             <div className={`SideBar__menuOverlay ${isMenuActiveOverlay ? "SideBar__menuOverlay_visible" : ""}`}>
                 <div className="SideBar__wrapper">
                     <div className={`SideBar__menuSideBar ${isMenuActive ? "SideBar__menu_active" : ""}`} id="menuSideBar">
-                        <button type="button" onClick={toggleMenu} className="SideBar__menu-btn" id="menu-btn" href="#">
+                        <button type="button" onClick={toggleMenu} className="SideBar__menu-btn" id="menu-btn" >
                             <img className="SideBar__menuImg" src={exitimg} alt="Кнопка крестика" />
                         </button>
                         <nav className="SideBar__menu-list">
@@ -31,11 +31,8 @@ export default function SideBar() {
                                 <a href="/" className="Header__movies">Главная</a>
                                 <a href="/movies" className="Header__movies">Фильмы</a>
                                 <a href="/saved-movies" className="Header__movies">Сохранённые фильмы</a>
-                            </div>
-                            <a href="/profile">
-                                <button className="Header__accountButton Header__accountButtonMenu">Аккаунт</button>
-                            </a>
-
+                            </div>                
+                            <a href="/profile" className="Header__accountButton Header__accountButtonMenu">Аккаунт</a>
                         </nav>
                     </div>
                 </div>

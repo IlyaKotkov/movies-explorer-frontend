@@ -8,7 +8,7 @@ export default function MoviesCard(props) {
         <div className='MoviesCardList__container'>
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -19,7 +19,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -30,7 +30,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -39,7 +39,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -48,7 +48,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -57,7 +57,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -68,7 +68,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -79,7 +79,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -88,7 +88,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -97,7 +97,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -106,7 +106,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
@@ -117,7 +117,7 @@ export default function MoviesCard(props) {
 
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <p className='MoviesCard__name'>В погоне за Бенкси</p>
+                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
                     <p className='MoviesCard__time'>27 минут</p>
                 </div>
                 <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />

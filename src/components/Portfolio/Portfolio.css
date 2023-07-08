@@ -78,6 +78,11 @@
         line-height: 50px;
         letter-spacing: -1.12px;
     }
+
+    .Portfolio__linkContainer {
+        margin-bottom: 20px;
+        padding-bottom: 25px;
+    }
 }
 
 @media screen and (max-width: 380px) {
@@ -87,6 +92,21 @@
         letter-spacing: -0.72px;
     }
 
+    .Portfolio__Container {
+        padding: 0;
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    .iconArrow {
+        width: 18px;
+        height: 18px;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
     .Portfolio__linkContainer {
         margin: 0;
         margin-bottom: 20px;
@@ -95,14 +115,6 @@
         height: auto;
     }
 
-    .Portfolio__Container {
-        padding: 0;
-        margin-left: 14px;
-        margin-right: 14px;
-    }
-}
-
-@media screen and (max-width: 320px) {
     .Portfolio {
         margin-top: 52px;
         height: 274px;

@@ -19,9 +19,7 @@ export default function Profile() {
                         <a href="/movies" className="Header__movies Header__moviesHidden">Фильмы</a>
                         <a href="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</a>
                     </div>
-                    <a href="/profile">
-                        <button className="Header__accountButton Header__accountButtonHidden">Аккаунт</button>
-                    </a>
+                    <a href="/profile" className="Header__accountButton Header__accountButtonHidden">Аккаунт</a>
                     <SideBar />
                 </div>
             </Header>
@@ -37,9 +35,7 @@ export default function Profile() {
                         <p className="Profile__infoUser">MopsBox2552@yandex.ru</p>
                     </div>
                     <button className="Profile__editButton">Редактировать</button>
-                    <a href="/signin">
-                    <button className="Profile__exitButton">Выйти из аккаунта</button>
-                    </a>
+                    <a href="/signin" className="Profile__exitButton">Выйти из аккаунта</a>
                 </div>
             </section>
         </>
