@@ -8,120 +8,13 @@ export default function MoviesCard(props) {
         <div className='MoviesCardList__container'>
             <div className='MoviesCard__Container'>
                 <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
+                    <h3 className='MoviesCard__name'></h3>
+                    <p className='MoviesCard__time'></p>
                 </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
+                <img className='MoviesCard__imageMovie' alt='изображение из фильма'  />
                 <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
+                    <img className='MoviesCard__imgSave'  alt='значок галочки' />
                 </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
             </div>
 
         </div>

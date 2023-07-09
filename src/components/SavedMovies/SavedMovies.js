@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer"
 import imageMovie from "../../images/pic__COLOR_pic.png"
 import imgDelete from "../../images/d6.png"
 import SideBar from "../SideBar/SideBar"
+import MoviesCardList from "../MoviesCardList/MoviesCardList"
 
 export default function SavedMovies(props) {
     return (
@@ -29,44 +30,7 @@ export default function SavedMovies(props) {
                 </div>
             </Header>
             <SearchForm />
-            <div className='MoviesCardList__container'>
-                <div>
-                    <div className='MoviesCard__Container'>
-                        <div className='MoviesCard__headingContainer'>
-                            <p className='MoviesCard__name'>В погоне за Бенкси</p>
-                            <p className='MoviesCard__time'>27 минут</p>
-                        </div>
-                        <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                        <button className='MoviesCard__saveMovie Moviescard__deleteMovie'>
-                            <img src={imgDelete} alt='значок крестика' />
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <div className='MoviesCard__Container'>
-                        <div className='MoviesCard__headingContainer'>
-                            <p className='MoviesCard__name'>В погоне за Бенкси</p>
-                            <p className='MoviesCard__time'>27 минут</p>
-                        </div>
-                        <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                        <button className='MoviesCard__saveMovie Moviescard__deleteMovie'>
-                            <img src={imgDelete} alt='значок крестика' />
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <div className='MoviesCard__Container'>
-                        <div className='MoviesCard__headingContainer'>
-                            <p className='MoviesCard__name'>В погоне за Бенкси</p>
-                            <p className='MoviesCard__time'>27 минут</p>
-                        </div>
-                        <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                        <button className='MoviesCard__saveMovie Moviescard__deleteMovie'>
-                            <img src={imgDelete} alt='значок крестика' />
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <MoviesCardList />
             <Footer />
         </>
     )

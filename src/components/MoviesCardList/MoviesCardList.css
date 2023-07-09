@@ -6,7 +6,6 @@
 .MoviesCardList__container {
     width: 100%;
     padding-top: 70px;
-    min-height: 619px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 360px);
     justify-content: center;
