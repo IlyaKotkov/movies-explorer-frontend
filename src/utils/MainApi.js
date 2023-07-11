@@ -49,7 +49,7 @@ class MainApi {
         return this._getResponseData(res)
     }
 
-    async getSavedMovies(token) {
+    async getSavedMovies() {
         const res = await fetch(`${this._baseUrl}/movies`, {
             method: "GET",
             headers: {
@@ -73,7 +73,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi ({
-    baseUrl: 'api.kotkovdiplom.nomoredomains.rocks',
+    baseUrl: 'https://api.kotkovdiplom.nomoredomains.rocks',
     headers: {
         "Content-Type": "application/json"
     }

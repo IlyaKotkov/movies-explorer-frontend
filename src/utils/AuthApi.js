@@ -1,4 +1,4 @@
-export const BASE_URL = 'api.kotkovdiplom.nomoredomains.rocks';
+export const BASE_URL = 'https://api.kotkovdiplom.nomoredomains.rocks';
 
 function getResponseData(res) {
   if (res.ok) {
@@ -19,19 +19,24 @@ export const register = async ( name, email, password) => {
 }
 
 
-export const authorize = async (email, password) => {
-  const response = await fetch(`${BASE_URL}/signin`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password })
-    });
-    const data = getResponseData(response);
-    if (data.token) {
-        localStorage.setItem('jwt', data.token);
-        return data;
+export const authorize = (email, password) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({email, password})
+  })
+  .then(response => {
+    return getResponseData(response)
+  })
+  
+  .then((data) => {
+    if (data.token){
+      localStorage.setItem('jwt', data.token);
+      return data;
     }
+  })
 };
 
 export const getContent = async (token) => {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import './App.css'
 
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 
 import Main from "../Main/Main"
 import Movies from "../Movies/Movies"
@@ -13,16 +13,20 @@ import Register from "../Register/Register"
 import NotFoundError from '../NotFoundError/NotFoundError';
 import ProtectedRouteElement from '../ProtectedRouteElement/ProtectedRouteElement';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import moviesApi from "../../utils/MainApi";
 import mainApi from "../../utils/MainApi";
+import * as AuthApi from '../../utils/AuthApi';
+import moviesApi from "../../utils/MoviesApi";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({
-    name: "",
-    email: "",
-  });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    "name": '',
+    "email": '',
+    "_id": '',
+  })
+  const [email, setEmail] = useState("")
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -31,41 +35,87 @@ function App() {
         moviesApi.getInitialMovies()
       ])
         .then((values) => {
-          setCurrentUser(values[0])
-          setMovies([...values[1]])
+          setCurrentUser(values[0]);
+          setMovies([...values[1]]);
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
     }
   }, [isLoggedIn]);
 
+  function handleLogin(email) {
+    setEmail(email)
+    setIsLoggedIn(true);
+  }
+
+  function handleLogout() {
+    setIsLoggedIn(false);
+  }
+
+  useEffect(() => {
+    checkToken();
+  }, [navigate])
+
+  function checkToken() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      AuthApi.getContent(jwt).then((res) => {
+        if (res) {
+          setEmail(res.email)
+          setIsLoggedIn(true);
+          navigate("/movies", { replace: true })
+        }
+      })
+        .catch(err => console.log(err))
+    }
+  }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser} >
       <div className="app">
         <Routes>
 
-          <Route path='/'  element={<Main />}/>
+          <Route path='/' element={<Main />} />
 
-          <Route path='/movies' 
-              element={<Movies/>}
-            
+          <Route
+            path='/movies'
+            element={
+              <ProtectedRouteElement
+                element={<Movies
+                  isLoggedIn={isLoggedIn}
+                  movies={movies}
+                />}
+              />
+            }
           />
 
-          <Route path='/saved-movies' 
-              element={<SavedMovies/>}
-           
+          <Route
+            path='/saved-movies'
+            element={
+              <ProtectedRouteElement
+                element={<SavedMovies
+                  isLoggedIn={isLoggedIn}
+                />}
+              />
+            }
           />
 
-          <Route path='/profile' 
-            
-              element={<Profile/>}
-            
-          
+          <Route
+            path='/profile'
+            element={
+              <ProtectedRouteElement
+                element={<Profile
+                  isLoggedIn={isLoggedIn}
+                  onExit={handleLogout}
+                  emailUser={email}
+                />}
+              />
+            }
           />
 
           <Route path='/signin' element={
             <Login
-
+              onLogin={handleLogin}
+              setEmail={setEmail}
             />
           } />
 
@@ -78,7 +128,7 @@ function App() {
           <Route
             path="*"
             element={
-              isLoggedIn ? <Navigate to="/" /> : <Navigate to="/signin" />
+              isLoggedIn ? <Navigate to="/movies" /> : <Navigate to="/signin" />
             }
           />
         </Routes>
