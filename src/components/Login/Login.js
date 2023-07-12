@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../../images/logo.png"
 import * as AuthApi from '../../utils/AuthApi';
+import { Link } from "react-router-dom";
 
 export default function Login({ onLogin }) {
 
   const [formValue, setFormValue] = useState({
-    email: '',
-    password: ''
+   email: '',
+  password: ''
   })
   const navigate = useNavigate()
 
@@ -20,7 +21,7 @@ export default function Login({ onLogin }) {
       [name]: value
     });
   }
-
+  
   function handleSubmit(e) {
     e.preventDefault();
     if (!formValue.email || !formValue.password) {
@@ -36,7 +37,7 @@ export default function Login({ onLogin }) {
         }
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err.message)
       });
   }
 
@@ -61,6 +62,7 @@ export default function Login({ onLogin }) {
             onChange={handleChange}
             required
           />
+          <span className="form__error"></span>
           <p className="Authorize__Text">Password</p>
           <input
             type="password"
@@ -70,11 +72,12 @@ export default function Login({ onLogin }) {
             onChange={handleChange}
             required
           />
+          <span className="form__error"></span>
           <button type="submit" className="Authorize__ButtonLink">Войти</button>
         </form>
 
         <p className="Authorize__unauthorizeText">Еще не зарегестрированы?
-          <a className="Authorize__link" href="/signup"> Регистрация</a>
+          <Link className="Authorize__link" to="/signup"> Регистрация</Link>
         </p>
       </div>
     </section>

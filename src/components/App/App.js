@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import './App.css'
 
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import Main from "../Main/Main"
 import Movies from "../Movies/Movies"
@@ -53,21 +53,22 @@ function App() {
 
   useEffect(() => {
     checkToken();
-  }, [navigate])
+  }, [])
 
-  function checkToken() {
+  const checkToken = () => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       AuthApi.getContent(jwt).then((res) => {
         if (res) {
           setEmail(res.email)
           setIsLoggedIn(true);
-          navigate("/movies", { replace: true })
+          navigate('/');
         }
       })
         .catch(err => console.log(err))
     }
   }
+
 
   return (
     <CurrentUserContext.Provider value={currentUser} >
@@ -80,10 +81,8 @@ function App() {
             path='/movies'
             element={
               <ProtectedRouteElement
-                element={<Movies
-                  isLoggedIn={isLoggedIn}
-                  movies={movies}
-                />}
+                isLoggedIn={isLoggedIn}
+                element={Movies}
               />
             }
           />
@@ -92,9 +91,8 @@ function App() {
             path='/saved-movies'
             element={
               <ProtectedRouteElement
-                element={<SavedMovies
-                  isLoggedIn={isLoggedIn}
-                />}
+                isLoggedIn={isLoggedIn}
+                element={SavedMovies}
               />
             }
           />
@@ -103,11 +101,10 @@ function App() {
             path='/profile'
             element={
               <ProtectedRouteElement
-                element={<Profile
-                  isLoggedIn={isLoggedIn}
-                  onExit={handleLogout}
-                  emailUser={email}
-                />}
+                isLoggedIn={isLoggedIn}
+                element={Profile}
+                emailUser={email}
+                onExit={handleLogout}
               />
             }
           />
@@ -117,20 +114,14 @@ function App() {
               onLogin={handleLogin}
               setEmail={setEmail}
             />
-          } />
+          }
+          />
 
           <Route path='/signup' element={
-            <Register
-
-            />
-          } />
-
-          <Route
-            path="*"
-            element={
-              isLoggedIn ? <Navigate to="/movies" /> : <Navigate to="/signin" />
-            }
+            <Register />
+          }
           />
+
         </Routes>
       </div>
     </CurrentUserContext.Provider>

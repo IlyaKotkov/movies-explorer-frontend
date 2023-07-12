@@ -6,6 +6,7 @@ import AboutMe from "../AboutMe/AboutMe"
 import Portfolio from "../Portfolio/Portfolio"
 import Footer from "../Footer/Footer"
 import logo from "../../images/logo.png"
+import { Link } from "react-router-dom"
 
 export default function Main() {
     return (
@@ -19,10 +20,10 @@ export default function Main() {
                     />
                     <div className="Header__Container">
                         
-                        <a href="/signup" className='Header__mainRegisterButton'>Регистрация</a>
+                        <Link to="/signup" className='Header__mainRegisterButton'>Регистрация</Link>
                        
                         
-                        <a href="/signin" className='Header__mainAuthorizeButton'>Войти</a>
+                        <Link to="/signin" className='Header__mainAuthorizeButton'>Войти</Link>
                         
                     </div>
                 </div>

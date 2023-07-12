@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import * as AuthApi from '../../utils/AuthApi'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Register() {
 
@@ -38,19 +39,20 @@ export default function Register() {
     return (
         <section className="Authorize">
             <div className="Authorize__Container">
-                <a href="/">
+                <Link to="/">
                     <img
                         className="Authorize__Logo"
                         src={logo}
                         alt="Логотип сайта movies-explorer"
                     />
-                </a>
+                </Link>
                 <h1 className="Authorize__Heaing">Рады видеть!</h1>
                 <form className="Authorize__inputContainer" onSubmit={handleSubmit}>
                     <p className="Authorize__Text">Имя</p>
                     <input
                         type="text"
                         name="name"
+                        pattern='^[а-яА-ЯёЁa-zA-Z0-9]+$'
                         className="Authorize__Input"
                         value={formValue.name}
                         onChange={handleChange}
@@ -79,7 +81,7 @@ export default function Register() {
 
 
                 <p className="Authorize__unauthorizeText">Уже зарегестрированы?
-                    <a className="Authorize__link" href="/signin"> Войти</a>
+                    <Link className="Authorize__link" to="/signin"> Войти</Link>
                 </p>
             </div>
         </section>

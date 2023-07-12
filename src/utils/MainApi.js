@@ -8,7 +8,10 @@ class MainApi {
         if(res.ok) {
             return res.json()
         }
-        return Promise.reject(`Ошибка: ${res.status}`)
+        return res.json().then(err => {
+            console.log(err)
+            return Promise.reject(`Ошибка: ${res.message}`)
+           })
     }
 
     async getInformation() {

@@ -1,42 +1,98 @@
-import { useState, useEffect } from "react"
-
+import { Link } from "react-router-dom"
 import Header from "../Header/Header"
 import logo from "../../images/logo.png"
 import SearchForm from "../SearchForm/SearchForm"
 import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import Footer from "../Footer/Footer"
 import Preloader from "../Preloader/Preloader"
-import { filterMovies } from "../../utils/Filter"
 import "../Header/Header.css"
 import SideBar from "../SideBar/SideBar"
 import moviesApi from "../../utils/MoviesApi"
 import mainApi from "../../utils/MainApi"
+import { useState, useEffect } from "react"
+import searchFilter from "../../utils/Filter"
 
-export default function Movies({ }) {
-    
+export default function Movies() {
+    const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const savedMovies = localStorage.getItem('savedMovies');
+        if (!savedMovies) {
+            setIsLoading(true);
+            mainApi
+                .getSavedMovies()
+                .then((data) => {
+                    if (data.length > 0) {
+                        localStorage.setItem('savedMovies', JSON.stringify(data));
+                    }
+                    setIsLoading(false);
+                })
+                .catch(() => {
+                    setError("Ошибка. Проверьте подключение или попробуйте позже");
+                });
+        }
+    }, []);
+
+    const filter = (query, shorts) => {
+        const storedMovies = JSON.parse(localStorage.getItem('movies'));
+        const filtered = searchFilter(storedMovies, query, shorts);
+        if (filtered.length === 0) {
+            setError("Ничего не найдено");
+        }
+        setMovies(filtered);
+        setIsLoading(false);
+    };
+
+    const handleSearch = (query, shorts) => {
+        setIsLoading(true);
+        const storedMovies = JSON.parse(localStorage.getItem('movies'));
+        if (!storedMovies) {
+            moviesApi
+                .getInitialMovies()
+                .then((films) => {
+                    localStorage.setItem('movies', JSON.stringify(films));
+                    filter(query, shorts);
+                })
+                .catch(() => {
+                    setError("Ошибка. Проверьте подключение или попробуйте позже");
+                });
+        } else {
+            filter(query, shorts);
+        }
+    };
+
     return (
         <>
             <Header>
                 <div className="Header__moviesContainer">
                     <div className="Header__moviesLinkContainer">
-                        <a href="/">
+                        <Link to="/">
                             <img
                                 className="Header__Logo"
                                 src={logo}
                                 alt="Логотип сайта movies-explorer"
                             />
-                        </a>
-                        <a href="/movies" className="Header__movies Header__moviesHidden">Фильмы</a>
-                        <a href="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</a>
+                        </Link>
+                        <Link to="/movies" className="Header__movies Header__moviesHidden">Фильмы</Link>
+                        <Link to="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</Link>
                     </div>
-                    <a href="/profile" className="Header__accountButton Header__accountButtonHidden">Аккаунт</a>
+                    <Link to="/profile" className="Header__accountButton Header__accountButtonHidden">Аккаунт</Link>
                     <SideBar />
                 </div>
             </Header>
-            <SearchForm 
+            <SearchForm
+                handleSearch={handleSearch}
             />
-            <MoviesCardList
-            />
+            {isLoading ? (
+                <Preloader />
+            ) : (
+                <MoviesCardList
+                    movies={movies}
+                    error={error}
+                />
+            )}
             <Footer />
         </>
     )

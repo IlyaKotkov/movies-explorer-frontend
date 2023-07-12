@@ -33,14 +33,20 @@
     cursor: pointer;
     margin-top: 179px;
     font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 45px;
-color: white;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+    color: white;
 }
 
-.Authorize__InputPassword {
-    color: #EE3465;
+.form__error {
+    color: #FF3055;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
 }
 
 .Authorize__Heaing {
@@ -153,6 +159,7 @@ color: white;
         display: block;
         width: 38px;
     }
+
     .Authorize__Heaing {
         width: 260px;
         margin-top: 50px;
@@ -195,7 +202,7 @@ color: white;
         font-size: 12px;
     }
 
-    .Authorize__unauthorizeText { 
+    .Authorize__unauthorizeText {
         margin-top: 14px;
     }
 
