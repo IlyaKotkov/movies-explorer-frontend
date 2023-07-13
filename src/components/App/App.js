@@ -125,7 +125,7 @@ function App() {
           <Route
             path="*"
             element={
-              isLoggedIn ? <Navigate to="/movies" /> : <Navigate to="/signin" />
+              <NotFoundError />
             }
           />
 

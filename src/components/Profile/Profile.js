@@ -43,11 +43,11 @@ export default function Profile({ emailUser, onExit }) {
                     <h1 className="Profile__heading">Привет, {currentUser.name}!</h1>
                     <div className="Profile__userInfoContainer">
                         <p className="Profile__infoUser">Имя</p>
-                        <p className="Profile__infoUser">{currentUser.name}</p>
+                        <input className="Profile__infoUser"></input>
                     </div>
                     <div className="Profile__userInfoContainer">
                         <p className="Profile__infoUser">E-mail</p>
-                        <p className="Profile__infoUser">{emailUser}</p>
+                        <input className="Profile__infoUser"></input>
                     </div>
                     <button className="Profile__editButton">Редактировать</button>
                     <button onClick={signOut} className="Profile__exitButton">Выйти из аккаунта</button>

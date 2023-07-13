@@ -63,6 +63,18 @@ class MainApi {
         return this._getResponseData(res)
     }
 
+    async saveMovie(movie) {
+        const res = await fetch(`${this._baseUrl}/movies`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            },
+            body: JSON.stringify(movie),
+        })
+        return this._getResponseData(res)
+    }
+
     async deleteMovie(movieId) {
         const res = await fetch(`${this._baseUrl}/movies/${movieId}`, {
             method: "DELETE",

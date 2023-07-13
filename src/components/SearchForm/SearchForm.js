@@ -13,42 +13,50 @@ export default function SearchForm({ handleSearch }) {
 
     const handeleInput = (evt) => {
         setInputValue(evt.target.value);
-      };
+    };
+
+    const handelCheckbox = () => {
+        setShorts(!shorts);
+        handleSearch(inputValue, !shorts);
+        if (pathname === '/movies') {
+            localStorage.setItem('shorts', !shorts);
+        }
+    };
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (!inputValue) {
-          setError(true);
-          evt.target.elements['search-query'].focus();
-          return;
+            setError(true);
+            evt.target.elements['search-query'].focus();
+            return;
         }
         setError(false);
         if (pathname === '/movies') {
-          localStorage.setItem('query', inputValue);
+            localStorage.setItem('query', inputValue);
         }
         handleSearch(inputValue);
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         if (pathname === '/movies') {
-          const savedInputValue = localStorage.getItem('query');
-          const savedShorts = JSON.parse(localStorage.getItem('shorts'));
-          if (savedInputValue) {
-            setInputValue(savedInputValue);
-          }
-          if (savedShorts) {
-            setShorts(savedShorts);
-          }
-          if (savedInputValue || savedShorts === true) {
-            handleSearch(savedInputValue, savedShorts);
-          }
+            const savedInputValue = localStorage.getItem('query');
+            const savedShorts = JSON.parse(localStorage.getItem('shorts'));
+            if (savedInputValue) {
+                setInputValue(savedInputValue);
+            }
+            if (savedShorts) {
+                setShorts(savedShorts);
+            }
+            if (savedInputValue || savedShorts === true) {
+                handleSearch(savedInputValue, savedShorts);
+            }
         }
-      }, []);
+    }, []);
 
     return (
         <section className="SearchForm">
             <div className="SearchForm__container">
-                <form onSubmit={handleSubmit} className='SearchForm__inputContainer'>
+                <form noValidate onSubmit={handleSubmit} className='SearchForm__inputContainer'>
                     <input
                         required
                         pattern='^[а-яА-ЯёЁa-zA-Z0-9]+$'
@@ -59,15 +67,25 @@ export default function SearchForm({ handleSearch }) {
                         name="search-query"
                         onChange={handeleInput}
                     />
-                    <button 
-                    type="submit" 
-                    className="SearchForm__searchButton"
+                    <button
+                        type="submit"
+                        className="SearchForm__searchButton"
                     >
                         <img className='SearchForm__searchImg' src={findImg} alt='значок поиска' />
                     </button>
+
+                    {error ? (
+                        <span className="search-form__inputs-error">
+                            Введите ключевое слово
+                        </span>
+                    ) : (
+                        <span className="search-form__inputs-error search-form__inputs-error_hidden">
+                            Введите ключевое слово
+                        </span>
+                    )}
                 </form>
                 <label className="SearchForm__checkBoxContainer" for="checkbox">
-                    <input className="SearchForm__checkBox" type="checkbox" id='checkbox' />
+                    <input onChange={handelCheckbox} value={shorts} className="SearchForm__checkBox" type="checkbox" id='checkbox' />
                     <span className="SearchForm__typeMovie">Короткометражки</span>
                 </label>
             </div>
