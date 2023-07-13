@@ -2,10 +2,12 @@ import './SearchForm.css'
 import findImg from '../../images/find.png'
 import { useState } from 'react';
 import { useLocation } from 'react-router';
+import { useEffect } from 'react';
 
 export default function SearchForm({ handleSearch }) {
 
     const [inputValue, setInputValue] = useState('');
+    const [shorts, setShorts] = useState(false);
     const [error, setError] = useState(false);
     const { pathname } = useLocation();
 
@@ -26,6 +28,22 @@ export default function SearchForm({ handleSearch }) {
         }
         handleSearch(inputValue);
       };
+
+      useEffect(() => {
+        if (pathname === '/movies') {
+          const savedInputValue = localStorage.getItem('query');
+          const savedShorts = JSON.parse(localStorage.getItem('shorts'));
+          if (savedInputValue) {
+            setInputValue(savedInputValue);
+          }
+          if (savedShorts) {
+            setShorts(savedShorts);
+          }
+          if (savedInputValue || savedShorts === true) {
+            handleSearch(savedInputValue, savedShorts);
+          }
+        }
+      }, []);
 
     return (
         <section className="SearchForm">

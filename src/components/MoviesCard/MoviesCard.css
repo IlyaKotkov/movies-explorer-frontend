@@ -91,38 +91,76 @@
 }
 
 .MoviesCard__saveMovie {
-    margin: 0;
-    margin-top: 18px;
-    align-self: center;
-    height: 29px;
     width: 100px;
-    color: white;
-    font-size: 12px;
-    background: #313131;
-    border-radius: 30px;
-    border: none;
+    height: 29px;
+    margin-top: 15px;
+    margin-left: 129px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-image: url(../../images/save6d.png);
+}
+.MoviesCard__saveMovie:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
 }
 
-.MoviesCard__saveMovie:hover {
+.MoviesCard__notSaved {
+    width: 100px;
+    height: 29px;
+    margin-top: 15px;
+    margin-left: 129px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-image: url(../../images/save6.svg);
+}
+.MoviesCard__notSaved:hover {
+    transition: opacity .5s linear;
+    opacity: .6;
+}
+
+.MoviesCard__deleteMovie {
+    width: 100px;
+    height: 29px;
+    margin-top: 15px;
+    margin-left: 129px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-image: url(../../images/d6.png);
+}
+.MoviesCard__deleteMovie:hover {
     transition: opacity .5s linear;
     opacity: .6;
 }
 
 @media screen and (max-width: 320px) {
     .MoviesCard__saveMovie {
-        margin-top: 14px;
+        margin-top: 10px;
+        margin-left: 100px;
     }
-}
-
-.MoviesCard__notSaved {
-    width: 100px;
-}
-
-.MoviesCard__saveMovieSaved {
-    background: transparent;
-}
-
-.Moviescard__deleteMovie {
-    background: transparent;
+    .MoviesCard__notSaved {
+        margin-top: 10px;
+        margin-left: 100px;
+    }
+    .MoviesCard__deleteMovie {
+        margin-top: 10px;
+        margin-left: 100px;
+    }
 }

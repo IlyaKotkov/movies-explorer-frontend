@@ -62,7 +62,7 @@ function App() {
         if (res) {
           setEmail(res.email)
           setIsLoggedIn(true);
-          navigate('/');
+          navigate('/movies');
         }
       })
         .catch(err => console.log(err))
