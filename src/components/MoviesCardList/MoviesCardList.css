@@ -1,11 +1,11 @@
 .MoviesCardList {
     margin: 0 auto;
     padding-top: 70px;
+    
 }
 
 .MoviesCardList__container {
     width: 100%;
-    padding-top: 70px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 360px);
     justify-content: center;

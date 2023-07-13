@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import './App.css'
 
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
 import Main from "../Main/Main"
 import Movies from "../Movies/Movies"
@@ -120,6 +120,13 @@ function App() {
           <Route path='/signup' element={
             <Register />
           }
+          />
+
+          <Route
+            path="*"
+            element={
+              isLoggedIn ? <Navigate to="/movies" /> : <Navigate to="/signin" />
+            }
           />
 
         </Routes>
