@@ -11,14 +11,17 @@ import searchFilter from "../../utils/Filter"
 import mainApi from "../../utils/MainApi"
 import Preloader from "../Preloader/Preloader"
 import { Link } from "react-router-dom"
+import { CurrentUserContext } from "../../contexts/CurrentUserContext"
+import { useContext } from "react"
 
 export default function SavedMovies(props) {
-
+    const currentUser = useContext(CurrentUserContext)
     const [movies, setMovies] = useState(
         JSON.parse(localStorage.getItem('savedMovies')) || []
     );
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const token = localStorage.getItem("token");
 
     const handleSearch = (query, isShort) => {
         setIsLoading(true);
@@ -33,22 +36,20 @@ export default function SavedMovies(props) {
     };
 
     useEffect(() => {
-        setIsLoading(true);
         mainApi
-            .getSavedMovies()
+            .getSavedMovies(token)
             .then((savedMovies) => {
-                const user = localStorage.getItem('userId');
-                const userMovies = savedMovies.filter((film) => film.owner === user);
+                const userMovies = savedMovies.filter((film) => film.owner === currentUser._id);
                 localStorage.setItem('savedMovies', JSON.stringify(userMovies));
                 setIsLoading(false);
                 if (savedMovies.length === 0) {
-                    setError('Вы еще ничего не добавили в избранное');
+                    setError();
                 }
             })
             .catch((err) => {
                 console.log(err)
             });
-    }, []);
+    }, [currentUser._id,token]);
 
 
     return (
@@ -74,7 +75,7 @@ export default function SavedMovies(props) {
             {isLoading ? (
                 <Preloader />
             ) : (
-                <MoviesCardList movies={movies} error={error} />
+                <MoviesCardList  movies={movies} error={error}/>
             )}
             <Footer />
         </>

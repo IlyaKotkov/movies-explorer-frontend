@@ -15,7 +15,7 @@ export default function SearchForm({ handleSearch }) {
         setInputValue(evt.target.value);
     };
 
-    const handelCheckbox = () => {
+    const handleCheckbox = () => {
         setShorts(!shorts);
         handleSearch(inputValue, !shorts);
         if (pathname === '/movies') {
@@ -34,7 +34,7 @@ export default function SearchForm({ handleSearch }) {
         if (pathname === '/movies') {
             localStorage.setItem('query', inputValue);
         }
-        handleSearch(inputValue);
+        handleSearch(inputValue, shorts);
     };
 
     useEffect(() => {
@@ -75,17 +75,17 @@ export default function SearchForm({ handleSearch }) {
                     </button>
 
                     {error ? (
-                        <span className="search-form__inputs-error">
+                        <span className="searchForm__inputError">
                             Введите ключевое слово
                         </span>
                     ) : (
-                        <span className="search-form__inputs-error search-form__inputs-error_hidden">
+                        <span className="searchForm__inputError searchForm__inputError_hidden">
                             Введите ключевое слово
                         </span>
                     )}
                 </form>
                 <label className="SearchForm__checkBoxContainer" for="checkbox">
-                    <input onChange={handelCheckbox} value={shorts} className="SearchForm__checkBox" type="checkbox" id='checkbox' />
+                    <input onChange={handleCheckbox} value={shorts} className="SearchForm__checkBox" type="checkbox" id='checkbox' />
                     <span className="SearchForm__typeMovie">Короткометражки</span>
                 </label>
             </div>

@@ -179,6 +179,11 @@
     text-decoration: none;
 }
 
+.Header__accountButtonMain {
+    border: 1px solid white;
+    background: #073042;
+}
+
 .Header__accountButton:hover {
     transition: opacity .5s linear;
     opacity: .6;

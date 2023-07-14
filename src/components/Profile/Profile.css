@@ -48,6 +48,20 @@
     line-height: normal;
 }
 
+.Profile__infoUserInput {
+    height: 19px;
+    border: none;
+    text-align: right;
+    padding: 0;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    box-sizing: border-box;
+    background-color: #202020;
+    color: white;
+}
+
 .Profile__editButton {
     margin: 0;
     margin-top: 220px;

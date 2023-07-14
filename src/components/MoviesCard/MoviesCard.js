@@ -43,7 +43,7 @@ export default function MoviesCard({ movie }) {
         .saveMovie({
           ...newMovie,
           image: `https://api.nomoreparties.co/${movie.image.url}`,
-          thumbnail: `https://api.nomoreparties.co/${image.formats.thumbnail.url}`,
+          thumbnail: `https://api.nomoreparties.co/${image.formats.thumbnail}`,
           movieId: id,
         })
         .then((savedMovie) => {
@@ -85,7 +85,7 @@ export default function MoviesCard({ movie }) {
         .catch((err) => console.log('error:', err));
     }
   };
-
+  console.log(`https://api.nomoreparties.co/${movie.image.url}`)
   return (
     <div className='MoviesCard__Container'>
       <div className='MoviesCard__headingContainer'>
@@ -96,10 +96,10 @@ export default function MoviesCard({ movie }) {
         <img className='MoviesCard__imageMovie' src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU} />
       </a>
       <button onClick={handleMovieSaved} className={
-        isSaved
+        `MoviesCard__Button ${location.pathname === "/saved-movies" && 'MoviesCard__deleteMovie'}
+            ${isSaved
           ? 'MoviesCard__saveMovie'
-          : 'MoviesCard__notSaved'
-      }>
+          : 'MoviesCard__notSaved'}`}>
 
       </button>
     </div>

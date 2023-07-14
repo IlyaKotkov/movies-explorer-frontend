@@ -89,7 +89,7 @@ export default function Login({ onLogin }) {
   return (
     <section className="Authorize">
       <div className="Authorize__Container">
-        <Link className="Authorize__mainLink" href="/">
+        <Link className="Authorize__mainLink" to="/">
           <img
             className="Authorize__Logo"
             src={logo}

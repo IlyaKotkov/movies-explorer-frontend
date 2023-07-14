@@ -75,7 +75,11 @@ function App() {
       <div className="app">
         <Routes>
 
-          <Route path='/' element={<Main />} />
+          <Route path='/' element={
+          <Main 
+            isLoggedIn={isLoggedIn}
+          />
+          } />
 
           <Route
             path='/movies'

@@ -34,7 +34,7 @@
     line-height: 17px;
 }
 
-.search-form__inputs-error {
+.searchForm__inputError {
     justify-self: start;
     color: #EE3465;
     font-weight: 400;
@@ -44,7 +44,7 @@
     max-width: 396px;
 }
 
-.search-form__inputs-error_hidden {
+.searchForm__inputError_hidden {
     visibility: hidden;
 }
 
