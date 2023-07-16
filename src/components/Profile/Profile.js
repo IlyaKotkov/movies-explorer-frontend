@@ -98,7 +98,12 @@ export default function Profile({ emailUser, onExit }) {
     }
 
     function signOut() {
-        localStorage.removeItem('jwt');
+        localStorage.removeItem("token");
+        localStorage.removeItem("query");
+        localStorage.removeItem("savedMovies");
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("movies");
+        localStorage.removeItem("shorts");
         navigate('/', { replace: true });
         onExit()
     }

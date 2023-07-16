@@ -89,7 +89,7 @@ export default function Register() {
         if (formValue.password) {
             const { name, email, password } = formValue;
             AuthApi.register(name, email, password).then(() => {
-                navigate('/signin', { replace: true })
+                navigate('/movies', { replace: true })
             })
                 .catch((err) => {
                     console.log(err)
