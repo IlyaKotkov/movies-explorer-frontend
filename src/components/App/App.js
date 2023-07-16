@@ -16,6 +16,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import mainApi from "../../utils/MainApi";
 import * as AuthApi from '../../utils/AuthApi';
 import moviesApi from "../../utils/MoviesApi";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -27,6 +28,7 @@ function App() {
   })
   const [email, setEmail] = useState("")
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -62,7 +64,6 @@ function App() {
         if (res) {
           setEmail(res.email)
           setIsLoggedIn(true);
-          navigate('/movies');
         }
       })
         .catch(err => console.log(err))
@@ -76,9 +77,9 @@ function App() {
         <Routes>
 
           <Route path='/' element={
-          <Main 
-            isLoggedIn={isLoggedIn}
-          />
+            <Main
+              isLoggedIn={isLoggedIn}
+            />
           } />
 
           <Route
@@ -125,13 +126,14 @@ function App() {
             <Register />
           }
           />
-
-          <Route
-            path="*"
-            element={
-              <NotFoundError />
-            }
+          {location.pathname !== '/' && (
+            <Route
+              path="*"
+              element={
+                <NotFoundError />
+              }
           />
+          )}
 
         </Routes>
       </div>
