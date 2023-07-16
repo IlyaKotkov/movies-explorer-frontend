@@ -99,7 +99,7 @@ export default function Profile({ emailUser, onExit }) {
 
     function signOut() {
         localStorage.removeItem('jwt');
-        navigate('/signin', { replace: true });
+        navigate('/', { replace: true });
         onExit()
     }
 
