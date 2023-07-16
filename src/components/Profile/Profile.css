@@ -75,6 +75,19 @@
     cursor: pointer;
 }
 
+.Profile__editButtonNoActive {
+    margin: 0;
+    margin-top: 220px;
+    color: red;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .Profile__editButton:hover {
     transition: opacity .5s linear;
     opacity: .6;

@@ -29,8 +29,8 @@ export default function Movies() {
                     }
                     setIsLoading(false);
                 })
-                .catch(() => {
-                    setError("Ошибка. Проверьте подключение или попробуйте позже");
+                .catch((err) => {
+                    console.log(err)
                 });
         }
     }, []);
@@ -39,7 +39,7 @@ export default function Movies() {
         const storedMovies = JSON.parse(localStorage.getItem('movies'));
         const filtered = searchFilter(storedMovies, query, shorts);
         if (filtered.length === 0) {
-            setError("Ничего не найдено");
+            console.log("ничего не найдено")
         }
         setMovies(filtered);
         setIsLoading(false);
@@ -55,8 +55,8 @@ export default function Movies() {
                     localStorage.setItem('movies', JSON.stringify(films));
                     filter(query, shorts);
                 })
-                .catch(() => {
-                    setError("Ошибка. Проверьте подключение или попробуйте позже");
+                .catch((err) => {
+                    console.log(err)
                 });
         } else {
             filter(query, shorts);

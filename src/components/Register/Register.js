@@ -113,7 +113,6 @@ export default function Register() {
                     <input
                         type="text"
                         name="name"
-                        pattern='^[а-яА-ЯёЁa-zA-Z0-9]+$'
                         className="Authorize__Input"
                         onBlur={e => blurHandler(e)}
                         value={formValue.name}

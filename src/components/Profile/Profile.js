@@ -16,11 +16,16 @@ export default function Profile({ emailUser, onExit }) {
     const navigate = useNavigate()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-
     const [user, setUser] = useState({
         "name": '',
         "email": ''
     })
+
+    const [emailDirty, setEmailDirty] = useState(false)
+    const [emailError, setEmailError] = useState('Email не может быть пустым')
+    const [nameDirty, setNameDirty] = useState(false)
+    const [nameError, setNameError] = useState('Имя не может быть пустым')
+    const [formValid, setFormValid] = useState(false)
 
     useEffect(() => {
             Promise.all([
@@ -32,12 +37,44 @@ export default function Profile({ emailUser, onExit }) {
                 .catch(err => console.log(err))   
     }, []);
 
+    useEffect(() => {
+        if (nameError || emailError) {
+            setFormValid(false)
+        } else {
+            setFormValid(true)
+        }
+
+    }, [nameError, emailError])
+
+    const blurHandler = (e) => {
+        switch (e.target.name) {
+            case 'email':
+                setEmailDirty(true)
+                break
+            case 'name':
+                setNameDirty(true)
+                break
+        }
+    }
+
     const handleNameChange = (e) => {
         setName(e.target.value)
+        const filterName = /[а-яА-ЯёЁa-zA-Z0-9]+$/
+        if (!filterName.test(String(e.target.value).toLowerCase())) {
+            setNameError("некорректное имя")
+        } else {
+            setNameError('')
+        }
     }
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
+        const filter = /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/;
+        if (!filter.test(String(e.target.value).toLowerCase())) {
+            setEmailError("некорректный Email")
+        } else {
+            setEmailError("")
+        }
     }
 
     useEffect(() => {
@@ -65,8 +102,6 @@ export default function Profile({ emailUser, onExit }) {
         navigate('/signin', { replace: true });
         onExit()
     }
-
-
 
     return (
         <>
@@ -98,21 +133,33 @@ export default function Profile({ emailUser, onExit }) {
                         <p className="Profile__infoUser">Имя</p>
                         <input
                             value={name}
+                            name="name"
                             required
                             onChange={handleNameChange}
+                            onBlur={e => blurHandler(e)}
                             className="Profile__infoUserInput"
-                        ></input>
+                        />
                     </div>
+                    {(nameDirty && nameError) && <div className="authorizeError">{nameError}</div>}
                     <div className="Profile__userInfoContainer">
                         <p className="Profile__infoUser">E-mail</p>
                         <input
+                            onBlur={e => blurHandler(e)}
                             value={email}
+                            name="email"
                             required
                             onChange={handleEmailChange}
                             className="Profile__infoUserInput"
-                        ></input>
+                        />
                     </div>
-                    <button type="submit" className="Profile__editButton">Редактировать</button>
+                    {(emailDirty && emailError) && <div className="authorizeError">{emailError}</div>}
+                    <button type="submit" disabled={!formValid}
+                    className={
+                        formValid
+                          ? "Profile__editButton"
+                          : "Profile__editButtonNoActive"
+                      }
+                    >Редактировать</button>
                     <button onClick={signOut} className="Profile__exitButton">Выйти из аккаунта</button>
                 </form>
             </section>

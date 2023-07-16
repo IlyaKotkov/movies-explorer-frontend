@@ -42,8 +42,8 @@ export default function MoviesCard({ movie }) {
       mainApi
         .saveMovie({
           ...newMovie,
-          image: `https://api.nomoreparties.co/${movie.image.url}`,
-          thumbnail: `https://api.nomoreparties.co/${image.formats.thumbnail}`,
+          image: `https://api.nomoreparties.co/${image.url}`,
+          thumbnail: `https://api.nomoreparties.co${image.url}`,
           movieId: id,
         })
         .then((savedMovie) => {
@@ -57,11 +57,7 @@ export default function MoviesCard({ movie }) {
           localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
         })
         .catch((err) => {
-          if (err.status === 400) {
-            console.log('Что-то пошло не так...');
-          } else {
-            console.log('Нет соединения');
-          }
+          console.log(err)
         });
     } else {
       mainApi
@@ -85,7 +81,6 @@ export default function MoviesCard({ movie }) {
         .catch((err) => console.log('error:', err));
     }
   };
-  console.log(`https://api.nomoreparties.co/${movie.image.url}`)
   return (
     <div className='MoviesCard__Container'>
       <div className='MoviesCard__headingContainer'>
@@ -93,7 +88,11 @@ export default function MoviesCard({ movie }) {
         <p className='MoviesCard__time'>{correctMinute(movie.duration)}</p>
       </div>
       <a href={movie.trailerLink} target='_blank' rel='noreferrer'>
-        <img className='MoviesCard__imageMovie' src={`https://api.nomoreparties.co/${movie.image.url}`} alt={movie.nameRU} />
+        <img className='MoviesCard__imageMovie' src={
+            location.pathname === '/movies'
+              ? `https://api.nomoreparties.co/${movie.image.url}`
+              : movie.image
+          } alt={movie.nameRU} />
       </a>
       <button onClick={handleMovieSaved} className={
         `MoviesCard__Button ${location.pathname === "/saved-movies" && 'MoviesCard__deleteMovie'}
