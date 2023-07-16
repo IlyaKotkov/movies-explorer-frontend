@@ -42,12 +42,12 @@ export default function Login({ onLogin }) {
 
   function handleChange(e) {
     const { name, value } = e.target;
-
     setFormValue({
       ...formValue,
       [name]: value
     });
 
+    
     setEmail(e.target.value)
     const filter = /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/;
     if (!filter.test(String(e.target.value).toLowerCase())) {
