@@ -18,8 +18,8 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
         "name": '',
         "email": ''
     })
-     const [emailError, setEmailError] = useState('Email не может быть пустым')
-    const [nameError, setNameError] = useState('Имя не может быть пустым')
+     const [emailError, setEmailError] = useState('')
+    const [nameError, setNameError] = useState('')
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [isEditData, setIsEditData] = useState(false);
@@ -80,9 +80,9 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
         setName(input.value);
         setIsValidName(input.validity.valid);
         if (!isValidName) {
-            setErrorName(input.validationMessage);
+            setNameError(input.validationMessage);
         } else {
-            setErrorName('');
+            setNameError('');
         }
     }
 
@@ -93,9 +93,9 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
         setEmail(input.value);
         setIsValidEmail(input.validity.valid);
         if (!isValidEmail) {
-            setErrorEmail(input.validationMessage);
+            setEmailError(input.validationMessage);
         } else {
-            setErrorEmail('');
+            setEmailError('');
         }
     }
 

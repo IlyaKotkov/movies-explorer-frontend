@@ -18,6 +18,7 @@ import * as AuthApi from '../../utils/AuthApi';
 import moviesApi from "../../utils/MoviesApi";
 import { useLocation } from "react-router-dom";
 import InfoTooltip from "../infoToolTip/infoToolTip";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -29,8 +30,10 @@ function App() {
   })
   const [email, setEmail] = useState("")
   const location = useLocation()
-
   const [infoMessage, setInfoMessage] = useState(null);
+
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -67,8 +70,14 @@ function App() {
           setEmail(res.email)
           setIsLoggedIn(true);
         }
+        setIsTokenChecked(true);
+        setIsLoading(false);
       })
-        .catch(err => console.log(err))
+        .catch(err => {
+          console.log(err)
+          setIsTokenChecked(true);
+          setIsLoading(false);
+        })
     }
   }
 
@@ -84,8 +93,10 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser} >
       <div className="app">
+        {isLoading ? (
+          <Preloader />
+        ) : (
         <Routes>
-
           <Route path='/' element={
             <Main
               isLoggedIn={isLoggedIn}
@@ -146,7 +157,7 @@ function App() {
           />
           )}
         </Routes>
-
+        )}
         <InfoTooltip
           onClose={closeAllPopups}
           message={infoMessage}
