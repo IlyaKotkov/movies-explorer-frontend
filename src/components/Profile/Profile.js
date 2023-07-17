@@ -10,70 +10,92 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import { useNavigate } from "react-router"
 import { useEffect } from "react"
 
-export default function Profile({ emailUser, onExit }) {
+export default function Profile({ onExit, handleShowInfoMessage }) {
 
-    const currentUser = useContext(CurrentUserContext)
+    const currentUser = useContext(CurrentUserContext);
     const navigate = useNavigate()
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
     const [user, setUser] = useState({
         "name": '',
         "email": ''
     })
-
-    const [emailDirty, setEmailDirty] = useState(false)
-    const [emailError, setEmailError] = useState('Email не может быть пустым')
-    const [nameDirty, setNameDirty] = useState(false)
+     const [emailError, setEmailError] = useState('Email не может быть пустым')
     const [nameError, setNameError] = useState('Имя не может быть пустым')
-    const [formValid, setFormValid] = useState(false)
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [isEditData, setIsEditData] = useState(false);
+    const [isActiveEdit, setIsActiveEdit] = useState(false);
+    const [errorEdit, setErrorEdit] = useState(false);
+    const [isValidName, setIsValidName] = useState(false);
+    const [isValidEmail, setIsValidEmail] = useState(false);
+    const [errorName, setErrorName] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
 
     useEffect(() => {
-            Promise.all([
-                mainApi.getInformation(),
-            ])
-                .then((values) => {
-                    setUser(values[0])
-                })
-                .catch(err => console.log(err))   
+        Promise.all([
+            mainApi.getInformation(),
+        ])
+            .then((values) => {
+                setUser(values[0])
+            })
+            .catch(err => console.log(err))
     }, []);
 
     useEffect(() => {
-        if (nameError || emailError) {
-            setFormValid(false)
+        if (currentUser.name !== name || currentUser.email !== email) {
+          setIsEditData(false);
         } else {
-            setFormValid(true)
+          setIsActiveEdit(false);
+        }
+      }, [currentUser, name, email]);
+
+    useEffect(() => {
+        if (nameError || emailError) {
+            setIsActiveEdit(false)
+        } else {
+            setIsActiveEdit(true)
         }
 
     }, [nameError, emailError])
 
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case 'email':
-                setEmailDirty(true)
-                break
-            case 'name':
-                setNameDirty(true)
-                break
-        }
-    }
+    const handelEditProfile = ({ name, email }) => {
+        mainApi
+            .editUserInfo({ name, email })
+            .then((data) => {
+                setIsEditData(true);
+                setErrorEdit(false);
+            })
+            .catch(() => {
+                setErrorEdit(true);
+            })
+            .finally(() => {
+                setErrorEdit(false);
+            });
+    };
 
     const handleNameChange = (e) => {
-        setName(e.target.value)
-        const filterName = /[а-яА-ЯёЁa-zA-Z0-9]+$/
-        if (!filterName.test(String(e.target.value).toLowerCase())) {
-            setNameError("некорректное имя")
+        setIsActiveEdit(true);
+        setIsEditData(false);
+        setName(e.target.value);
+        const input = e.target;
+        setName(input.value);
+        setIsValidName(input.validity.valid);
+        if (!isValidName) {
+            setErrorName(input.validationMessage);
         } else {
-            setNameError('')
+            setErrorName('');
         }
     }
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-        const filter = /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/;
-        if (!filter.test(String(e.target.value).toLowerCase())) {
-            setEmailError("некорректный Email")
+        setIsActiveEdit(true);
+        setEmail(e.target.value);
+        const input = e.target;
+        setEmail(input.value);
+        setIsValidEmail(input.validity.valid);
+        if (!isValidEmail) {
+            setErrorEmail(input.validationMessage);
         } else {
-            setEmailError("")
+            setErrorEmail('');
         }
     }
 
@@ -82,19 +104,19 @@ export default function Profile({ emailUser, onExit }) {
         setEmail(currentUser.email)
     }, [currentUser])
 
-    const handleUpdateUser = (data) => {
-        mainApi.editUserInfo(data).then(updateUser => {
-            setUser(updateUser)
-        })
-            .catch(err => console.log(err))
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleUpdateUser({
-            name,
-            email,
-        });
+        if (name !== currentUser.name || email !== currentUser.email) {
+            setIsActiveEdit(true);
+            handelEditProfile({ name, email });
+            handleShowInfoMessage({
+                text: "Данные изменены!",
+                isSuccess: true
+              })
+              setIsActiveEdit(false);
+        } else {
+            setIsActiveEdit(false);
+        }
     }
 
     function signOut() {
@@ -133,37 +155,42 @@ export default function Profile({ emailUser, onExit }) {
                     id="profileForm"
                     noValidate
                     className="Profile__container">
-                    <h1 className="Profile__heading">Привет, {currentUser.name}!</h1>
+                    <h1 className="Profile__heading">{`Привет, ${currentUser.name}!`}</h1>
                     <div className="Profile__userInfoContainer">
                         <p className="Profile__infoUser">Имя</p>
                         <input
-                            value={name}
+                            value={name || ''}
                             name="name"
+                            id="name"
+                            type="name"
                             required
                             onChange={handleNameChange}
-                            onBlur={e => blurHandler(e)}
                             className="Profile__infoUserInput"
                         />
                     </div>
-                    {(nameDirty && nameError) && <div className="authorizeError">{nameError}</div>}
+                    <span className="authorizeError">
+                        {errorName}
+                    </span>
                     <div className="Profile__userInfoContainer">
                         <p className="Profile__infoUser">E-mail</p>
                         <input
-                            onBlur={e => blurHandler(e)}
-                            value={email}
+                            type="email"
+                            value={email || ''}
                             name="email"
                             required
                             onChange={handleEmailChange}
                             className="Profile__infoUserInput"
                         />
                     </div>
-                    {(emailDirty && emailError) && <div className="authorizeError">{emailError}</div>}
-                    <button type="submit" disabled={!formValid}
-                    className={
-                        formValid
-                          ? "Profile__editButton"
-                          : "Profile__editButtonNoActive"
-                      }
+                    <span className="authorizeError">
+                        {errorEmail}
+                    </span>
+                    <button type="submit" disabled={!isActiveEdit}
+                        className={
+                            isActiveEdit
+                                ? "Profile__editButton"
+                                : "Profile__editButtonNoActive"
+                        }
                     >Редактировать</button>
                     <button onClick={signOut} className="Profile__exitButton">Выйти из аккаунта</button>
                 </form>

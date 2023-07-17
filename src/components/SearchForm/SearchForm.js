@@ -10,6 +10,7 @@ export default function SearchForm({ handleSearch }) {
     const [shorts, setShorts] = useState(false);
     const [error, setError] = useState(false);
     const { pathname } = useLocation();
+    const [placeholderContent, setPlaceholderContent] = useState('Название');
 
     const handeleInput = (evt) => {
         setInputValue(evt.target.value);
@@ -31,6 +32,7 @@ export default function SearchForm({ handleSearch }) {
             return;
         }
         setError(false);
+        setPlaceholderContent('query');
         if (pathname === '/movies') {
             localStorage.setItem('query', inputValue);
         }
@@ -61,7 +63,7 @@ export default function SearchForm({ handleSearch }) {
                         required
                         pattern='^[а-яА-ЯёЁa-zA-Z0-9]+$'
                         type="text"
-                        placeholder='Фильм'
+                        placeholder={placeholderContent}
                         className="SearchForm__input"
                         id="search-query"
                         name="search-query"

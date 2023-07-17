@@ -17,6 +17,7 @@ import mainApi from "../../utils/MainApi";
 import * as AuthApi from '../../utils/AuthApi';
 import moviesApi from "../../utils/MoviesApi";
 import { useLocation } from "react-router-dom";
+import InfoTooltip from "../infoToolTip/infoToolTip";
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -27,8 +28,9 @@ function App() {
     "_id": '',
   })
   const [email, setEmail] = useState("")
-  const navigate = useNavigate()
   const location = useLocation()
+
+  const [infoMessage, setInfoMessage] = useState(null);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -70,6 +72,14 @@ function App() {
     }
   }
 
+  function handleShowInfoMessage(message) {
+    setInfoMessage(message);
+  }
+
+  const closeAllPopups = () => {
+    setInfoMessage(null);
+  }
+
 
   return (
     <CurrentUserContext.Provider value={currentUser} >
@@ -108,6 +118,7 @@ function App() {
               <ProtectedRouteElement
                 isLoggedIn={isLoggedIn}
                 element={Profile}
+                handleShowInfoMessage={handleShowInfoMessage}
                 emailUser={email}
                 onExit={handleLogout}
               />
@@ -134,8 +145,13 @@ function App() {
               }
           />
           )}
-
         </Routes>
+
+        <InfoTooltip
+          onClose={closeAllPopups}
+          message={infoMessage}
+        />
+
       </div>
     </CurrentUserContext.Provider>
   );
