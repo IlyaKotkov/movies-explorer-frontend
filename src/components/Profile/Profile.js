@@ -18,7 +18,7 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
         "name": '',
         "email": ''
     })
-     const [emailError, setEmailError] = useState('')
+    const [emailError, setEmailError] = useState('')
     const [nameError, setNameError] = useState('')
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")

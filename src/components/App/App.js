@@ -78,7 +78,12 @@ function App() {
           setIsTokenChecked(true);
           setIsLoading(false);
         })
+        
     }
+    else {
+      setIsTokenChecked(true); 
+      setIsLoading(false); 
+      }
   }
 
   function handleShowInfoMessage(message) {
