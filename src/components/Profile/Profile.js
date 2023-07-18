@@ -120,12 +120,7 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
     }
 
     function signOut() {
-        localStorage.removeItem("token");
-        localStorage.removeItem("query");
-        localStorage.removeItem("savedMovies");
-        localStorage.removeItem("jwt");
-        localStorage.removeItem("movies");
-        localStorage.removeItem("shorts");
+        localStorage.clear();
         navigate('/', { replace: true });
         onExit()
     }

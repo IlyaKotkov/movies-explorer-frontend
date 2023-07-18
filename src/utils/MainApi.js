@@ -52,12 +52,12 @@ class MainApi {
         return this._getResponseData(res)
     }
 
-    async getSavedMovies(token) {
+    async getSavedMovies() {
         const res = await fetch(`${this._baseUrl}/movies`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                authorization: `Bearer ${token}`,
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
             }
         })
         return this._getResponseData(res)
