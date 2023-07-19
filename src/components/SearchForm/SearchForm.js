@@ -21,7 +21,7 @@ export default function SearchForm({ handleSearch }) {
         handleSearch(inputValue, !shorts);
         if (pathname === '/movies') {
             localStorage.setItem('shorts', !shorts);
-        }
+        } 
     };
 
     const handleSubmit = (evt) => {
@@ -35,7 +35,7 @@ export default function SearchForm({ handleSearch }) {
         setPlaceholderContent('query');
         if (pathname === '/movies') {
             localStorage.setItem('query', inputValue);
-        }
+        } 
         handleSearch(inputValue, shorts);
     };
 
@@ -87,7 +87,7 @@ export default function SearchForm({ handleSearch }) {
                     )}
                 </form>
                 <label className="SearchForm__checkBoxContainer" for="checkbox">
-                    <input onChange={handleCheckbox} value={shorts} className="SearchForm__checkBox" type="checkbox" id='checkbox' />
+                    <input onChange={handleCheckbox} checked={shorts} value={shorts} className="SearchForm__checkBox" type="checkbox" id='checkbox' />
                     <span className="SearchForm__typeMovie">Короткометражки</span>
                 </label>
             </div>
