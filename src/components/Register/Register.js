@@ -35,7 +35,14 @@ export default function Register() {
 
     }, [nameError, emailError, passwordError])
 
-    const blurHandler = (e) => {
+    function handleChange(e) {
+        const { name, value } = e.target;
+
+        setFormValue({
+            ...formValue,
+            [name]: value
+        });
+
         switch (e.target.name) {
             case 'email':
                 setEmailDirty(true)
@@ -47,15 +54,6 @@ export default function Register() {
                 setNameDirty(true)
                 break
         }
-    }
-
-    function handleChange(e) {
-        const { name, value } = e.target;
-
-        setFormValue({
-            ...formValue,
-            [name]: value
-        });
 
         setEmail(e.target.value)
         const filter = /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/;
@@ -114,7 +112,6 @@ export default function Register() {
                         type="text"
                         name="name"
                         className="Authorize__Input"
-                        onBlur={e => blurHandler(e)}
                         value={formValue.name}
                         onChange={handleChange}
                         required
@@ -122,7 +119,6 @@ export default function Register() {
                     {(nameDirty && nameError) && <div className="authorizeError">{nameError}</div>}
                     <p className="Authorize__Text">E-mail</p>
                     <input
-                        onBlur={e => blurHandler(e)}
                         onChange={handleChange}
                         type="email"
                         name="email"
@@ -133,7 +129,6 @@ export default function Register() {
                     {(emailDirty && emailError) && <div className="authorizeError">{emailError}</div>}
                     <p className="Authorize__Text">Password</p>
                     <input
-                        onBlur={e => blurHandler(e)}
                         type="password"
                         name="password"
                         className="Authorize__Input Authorize__InputPassword"

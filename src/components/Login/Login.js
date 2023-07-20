@@ -29,7 +29,13 @@ export default function Login({ onLogin }) {
 
   }, [emailError, passwordError])
 
-  const blurHandler = (e) => {
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormValue({
+      ...formValue,
+      [name]: value
+    });
+
     switch (e.target.name) {
       case 'email':
         setEmailDirty(true)
@@ -38,15 +44,6 @@ export default function Login({ onLogin }) {
         setPasswordDirty(true)
         break
     }
-  }
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value
-    });
-
     
     setEmail(e.target.value)
     const filter = /[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+/;
@@ -100,24 +97,24 @@ export default function Login({ onLogin }) {
         <form noValidate className="Authorize__inputContainer" onSubmit={handleSubmit}>
           <p className="Authorize__Text">E-mail</p>
           <input
-            onBlur={e => blurHandler(e)}
             onChange={handleChange}
             type="email"
             name="email"
             className="Authorize__Input"
             value={formValue.email}
             required
+            autocomplete="email"
           />
           {(emailDirty && emailError) && <div className="authorizeError">{emailError}</div>}
           <p className="Authorize__Text">Password</p>
           <input
-            onBlur={e => blurHandler(e)}
             type="password"
             name="password"
             className="Authorize__Input Authorize__InputPassword"
             value={formValue.password}
             onChange={handleChange}
             required
+            autocomplete="off"
           />
           {(passwordDirty && [passwordError]) && <div className="authorizeError">{passwordError}</div>}
           <button disabled={!formValid} type="submit" className={
