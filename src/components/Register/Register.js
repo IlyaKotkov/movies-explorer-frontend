@@ -35,7 +35,30 @@ export default function Register() {
 
     }, [nameError, emailError, passwordError])
 
-    function handleChange(e) {
+    function handleNameChange(e) {
+        const { name, value } = e.target;
+
+        setFormValue({
+            ...formValue,
+            [name]: value
+        });
+
+        switch (e.target.name) {
+            case 'name':
+                setNameDirty(true)
+                break
+        }
+
+        setName(e.target.value)
+        const filterName = /[а-яА-ЯёЁa-zA-Z0-9]+$/
+        if (!filterName.test(String(e.target.value).toLowerCase())) {
+            setNameError("некорректное имя")
+        } else {
+            setNameError('')
+        }
+    }
+
+    function handleEmailChange(e) {
         const { name, value } = e.target;
 
         setFormValue({
@@ -47,12 +70,6 @@ export default function Register() {
             case 'email':
                 setEmailDirty(true)
                 break
-            case 'password':
-                setPasswordDirty(true)
-                break
-            case 'name':
-                setNameDirty(true)
-                break
         }
 
         setEmail(e.target.value)
@@ -61,6 +78,21 @@ export default function Register() {
             setEmailError("некорректный Email")
         } else {
             setEmailError("")
+        }
+    }
+
+    function handlePasswordChange(e) {
+        const { name, value } = e.target;
+
+        setFormValue({
+            ...formValue,
+            [name]: value
+        });
+
+        switch (e.target.name) {
+            case 'password':
+                setPasswordDirty(true)
+                break
         }
 
         setPassword(e.target.value)
@@ -71,14 +103,6 @@ export default function Register() {
             }
         } else {
             setPasswordError('')
-        }
-
-        setName(e.target.value)
-        const filterName = /[а-яА-ЯёЁa-zA-Z0-9]+$/
-        if (!filterName.test(String(e.target.value).toLowerCase())) {
-            setNameError("некорректное имя")
-        } else {
-            setNameError('')
         }
     }
 
@@ -113,13 +137,13 @@ export default function Register() {
                         name="name"
                         className="Authorize__Input"
                         value={formValue.name}
-                        onChange={handleChange}
+                        onChange={handleNameChange}
                         required
                     />
                     {(nameDirty && nameError) && <div className="authorizeError">{nameError}</div>}
                     <p className="Authorize__Text">E-mail</p>
                     <input
-                        onChange={handleChange}
+                        onChange={handleEmailChange}
                         type="email"
                         name="email"
                         className="Authorize__Input"
@@ -133,7 +157,7 @@ export default function Register() {
                         name="password"
                         className="Authorize__Input Authorize__InputPassword"
                         value={formValue.password}
-                        onChange={handleChange}
+                        onChange={handlePasswordChange}
                         required
                     />
                     {(passwordDirty && [passwordError]) && <div className="authorizeError">{passwordError}</div>}

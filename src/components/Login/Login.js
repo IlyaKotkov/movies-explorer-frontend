@@ -29,7 +29,7 @@ export default function Login({ onLogin }) {
 
   }, [emailError, passwordError])
 
-  function handleChange(e) {
+  function handleEmailChange(e) {
     const { name, value } = e.target;
     setFormValue({
       ...formValue,
@@ -39,9 +39,6 @@ export default function Login({ onLogin }) {
     switch (e.target.name) {
       case 'email':
         setEmailDirty(true)
-        break
-      case 'password':
-        setPasswordDirty(true)
         break
     }
     
@@ -53,6 +50,21 @@ export default function Login({ onLogin }) {
       setEmailError("")
     }
 
+  }
+
+  function handlePasswordChange(e) {
+    const { name, value } = e.target;
+    setFormValue({
+      ...formValue,
+      [name]: value
+    });
+
+    switch (e.target.name) {
+      case 'password':
+        setPasswordDirty(true)
+        break
+    }
+    
     setPassword(e.target.value)
     if (e.target.value.length < 8) {
       setPasswordError("пароль должен быть не менее 8 символов")
@@ -97,7 +109,7 @@ export default function Login({ onLogin }) {
         <form noValidate className="Authorize__inputContainer" onSubmit={handleSubmit}>
           <p className="Authorize__Text">E-mail</p>
           <input
-            onChange={handleChange}
+            onChange={handleEmailChange}
             type="email"
             name="email"
             className="Authorize__Input"
@@ -112,7 +124,7 @@ export default function Login({ onLogin }) {
             name="password"
             className="Authorize__Input Authorize__InputPassword"
             value={formValue.password}
-            onChange={handleChange}
+            onChange={handlePasswordChange}
             required
             autocomplete="off"
           />
