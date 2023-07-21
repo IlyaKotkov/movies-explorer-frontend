@@ -53,6 +53,10 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  const updateCurrentUser = (updatedUserData) => {
+    setCurrentUser(updatedUserData);
+  };
+
   function handleLogin(formValue) {
     if (!formValue.email || !formValue.password) {
       return
@@ -154,6 +158,7 @@ function App() {
                   handleShowInfoMessage={handleShowInfoMessage}
                   emailUser={email}
                   onExit={handleLogout}
+                  updateUser={updateCurrentUser}
                 />
               }
             />

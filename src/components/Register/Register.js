@@ -19,7 +19,6 @@ export default function Register({onLogin}) {
     const [nameError, setNameError] = useState('Имя не может быть пустым')
 
     const [formValid, setFormValid] = useState(false)
-    const navigate = useNavigate()
     const [formValue, setFormValue] = useState({
         name: '',
         email: '',

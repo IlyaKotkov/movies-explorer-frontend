@@ -10,7 +10,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import { useNavigate } from "react-router"
 import { useEffect } from "react"
 
-export default function Profile({ onExit, handleShowInfoMessage }) {
+export default function Profile({ onExit, handleShowInfoMessage, updateUser }) {
 
     const currentUser = useContext(CurrentUserContext);
     const navigate = useNavigate()
@@ -68,15 +68,20 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
             .then((data) => {
                 setIsEditData(true);
                 setErrorEdit(false);
+                handleShowInfoMessage({
+                    text: ("Данные изменены!"),
+                    isSuccess: true
+                  })
             })
             .catch((res) => {
                 handleShowInfoMessage({
-                    text: (`${res.message}`),
-                    isSuccess: true
+                    text: (res.data),
+                    isSuccess: false
                   })
                 setErrorEdit(true);
             })
             .finally(() => {
+                
                 setErrorEdit(false);
             });
     };
@@ -113,10 +118,7 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
             setIsActiveEdit(true);
             handelEditProfile({ name, email });
             setIsActiveEdit(false);
-            handleShowInfoMessage({
-                text: "Данные изменены!",
-                isSuccess: true
-              })
+            updateUser({ name, email })
         } else { 
             setIsActiveEdit(false);
         }

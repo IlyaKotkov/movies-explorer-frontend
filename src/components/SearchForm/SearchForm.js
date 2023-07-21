@@ -11,6 +11,7 @@ export default function SearchForm({ handleSearch }) {
     const [error, setError] = useState(false);
     const { pathname } = useLocation();
     const [placeholderContent, setPlaceholderContent] = useState('Название');
+    const query = localStorage.getItem("query")
 
     const handeleInput = (evt) => {
         setInputValue(evt.target.value);
@@ -32,8 +33,7 @@ export default function SearchForm({ handleSearch }) {
             return;
         }
         setError(false);
-        const queryMovies = localStorage.getItem('query');
-        setPlaceholderContent(queryMovies);
+        setPlaceholderContent(query);
         if (pathname === '/movies') {
             localStorage.setItem('query', inputValue);
         } 
@@ -66,6 +66,7 @@ export default function SearchForm({ handleSearch }) {
                         type="text"
                         placeholder={placeholderContent}
                         className="SearchForm__input"
+                        
                         id="search-query"
                         name="search-query"
                         onChange={handeleInput}
