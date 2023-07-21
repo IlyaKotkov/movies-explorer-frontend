@@ -47,7 +47,7 @@ export default function SavedMovies(props) {
             .catch((err) => {
                 console.log(err)
             });
-    }, [currentUser._id,token]);
+    }, [currentUser._id, token]);
 
 
     return (

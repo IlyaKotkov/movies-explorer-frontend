@@ -2,12 +2,12 @@ export const BASE_URL = 'https://api.kotkovdiplom.nomoredomains.rocks';
 
 function getResponseData(res) {
   if (res.ok) {
-      return res.json();
+    return res.json()
   }
   return res.json().then(err => {
-    console.log(err)
-    return Promise.reject(`Ошибка: ${res.message}`)
-   })
+   console.log(err)
+   return Promise.reject(`Ошибка: ${res.status}`)
+  })
 }
 
 export const register = async ( name, email, password) => {

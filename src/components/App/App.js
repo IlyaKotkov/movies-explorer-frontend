@@ -68,10 +68,18 @@ function App() {
           setFormValue({ email: '', password: '' });
           setIsLoggedIn(true);
           navigate("/movies", { replace: true });
+          handleShowInfoMessage({
+            text: ("Вы успешно вошли"),
+            isSuccess: true
+          })
         }
       })
       .catch((err) => {
-        console.log(err.message)
+        handleShowInfoMessage({
+          text: (`Что-то пошло не так! ${err}`),
+          isSuccess: false
+        })
+        console.log(err)
       });
   }
 
@@ -166,6 +174,7 @@ function App() {
             <Route path='/signin' element={
               !isLoggedIn ?
               <Login
+              handleShowInfoMessage={handleShowInfoMessage}
                 onLogin={handleLogin}
                 setEmail={setEmail}
               />
@@ -177,6 +186,7 @@ function App() {
             <Route path='/signup' element={
               !isLoggedIn ?
               <Register
+              handleShowInfoMessage={handleShowInfoMessage}
                 onLogin={handleLogin}
               />
               :

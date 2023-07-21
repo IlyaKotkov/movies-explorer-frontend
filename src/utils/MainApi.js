@@ -5,13 +5,13 @@ class MainApi {
     }
 
     _getResponseData(res) {
-        if(res.ok) {
+        if (res.ok) {
             return res.json()
-        }
-        return res.json().then(err => {
-            console.log(err)
-            return Promise.reject(`Ошибка: ${res.message}`)
-           })
+          }
+          return res.json().then(err => {
+           console.log(err)
+           return Promise.reject(`Ошибка: ${res.status}`)
+          })
     }
 
     async getInformation() {

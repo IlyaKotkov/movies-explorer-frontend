@@ -4,14 +4,12 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { useEffect } from 'react';
 
-export default function SearchForm({ handleSearch }) {
+export default function SearchForm({ handleSearch,  }) {
 
     const [inputValue, setInputValue] = useState('');
     const [shorts, setShorts] = useState(false);
     const [error, setError] = useState(false);
     const { pathname } = useLocation();
-    const [placeholderContent, setPlaceholderContent] = useState('Название');
-    const query = localStorage.getItem("query")
 
     const handeleInput = (evt) => {
         setInputValue(evt.target.value);
@@ -33,7 +31,6 @@ export default function SearchForm({ handleSearch }) {
             return;
         }
         setError(false);
-        setPlaceholderContent(query);
         if (pathname === '/movies') {
             localStorage.setItem('query', inputValue);
         } 
@@ -64,9 +61,9 @@ export default function SearchForm({ handleSearch }) {
                         required
                         pattern='^[а-яА-ЯёЁa-zA-Z0-9]+$'
                         type="text"
-                        placeholder={placeholderContent}
+                        placeholder={"Название"}
                         className="SearchForm__input"
-                        
+                        value={inputValue}
                         id="search-query"
                         name="search-query"
                         onChange={handeleInput}

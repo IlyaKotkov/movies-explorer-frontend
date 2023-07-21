@@ -63,9 +63,8 @@ export default function Profile({ onExit, handleShowInfoMessage, updateUser }) {
     }, [nameError, emailError])
 
     const handelEditProfile = ({ name, email }) => {
-        mainApi
-            .editUserInfo({ name, email })
-            .then((data) => {
+        mainApi.editUserInfo({ name, email })
+            .then(() => {
                 setIsEditData(true);
                 setErrorEdit(false);
                 handleShowInfoMessage({
@@ -73,15 +72,14 @@ export default function Profile({ onExit, handleShowInfoMessage, updateUser }) {
                     isSuccess: true
                   })
             })
-            .catch((res) => {
+            .catch((err) => {
                 handleShowInfoMessage({
-                    text: (res.data),
+                    text: (`Что-то пошло не так! ${err}`),
                     isSuccess: false
                   })
                 setErrorEdit(true);
             })
-            .finally(() => {
-                
+            .finally(() => {      
                 setErrorEdit(false);
             });
     };

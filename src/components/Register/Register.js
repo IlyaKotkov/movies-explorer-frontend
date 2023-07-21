@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function Register({onLogin}) {
+export default function Register({onLogin, handleShowInfoMessage}) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -115,6 +115,10 @@ export default function Register({onLogin}) {
                 onLogin({email, password})
             })
                 .catch((err) => {
+                    handleShowInfoMessage({
+                        text: (`Что-то пошло не так! ${err}`),
+                        isSuccess: false
+                      })
                     console.log(err)
                 });
         }

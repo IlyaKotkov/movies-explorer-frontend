@@ -5,7 +5,7 @@ import logo from "../../images/logo.png"
 import * as AuthApi from '../../utils/AuthApi';
 import { Link } from "react-router-dom";
 
-export default function Login({onLogin}) {
+export default function Login({onLogin, handleShowInfoMessage}) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
