@@ -31,9 +31,13 @@ function App() {
   const [email, setEmail] = useState("")
   const location = useLocation()
   const [infoMessage, setInfoMessage] = useState(null);
-
   const [isTokenChecked, setIsTokenChecked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [formValue, setFormValue] = useState({
+    email: '',
+    password: ''
+  })
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -49,9 +53,22 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  function handleLogin(email) {
-    setEmail(email)
-    setIsLoggedIn(true);
+  function handleLogin(formValue) {   
+      if (!formValue.email || !formValue.password) {
+        return
+      }
+      AuthApi.authorize(formValue.email, formValue.password)
+        .then((data) => {
+          if (data.token) {
+            localStorage.setItem('jwt', data.token)
+            setFormValue({ email: '', password: '' });
+            setIsLoggedIn(true);
+            navigate("/movies", { replace: true });
+          }
+        })
+        .catch((err) => {
+          console.log(err.message)
+        });
   }
 
   function handleLogout() {

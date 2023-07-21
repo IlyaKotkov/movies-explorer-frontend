@@ -5,7 +5,7 @@ import logo from "../../images/logo.png"
 import * as AuthApi from '../../utils/AuthApi';
 import { Link } from "react-router-dom";
 
-export default function Login({ onLogin }) {
+export default function Login({onLogin}) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -77,20 +77,13 @@ export default function Login({ onLogin }) {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    if (!formValue.email || !formValue.password) {
-      return
+    e.preventDefault()
+    if (formValue.password) {
+        const { email, password } = formValue;
+        onLogin({email, password})
+    } else {
+      console.error()
     }
-    AuthApi.authorize(formValue.email, formValue.password)
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem('token', data.token)
-          setFormValue({ email: '', password: '' });
-        }
-      })
-      .catch((err) => {
-        console.log(err.message)
-      });
   }
 
   return (

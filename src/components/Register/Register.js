@@ -25,6 +25,8 @@ export default function Register({onLogin}) {
         email: '',
         password: '',
     })
+    const [emailCurrentDirty, setEmailCurrentDirty] = useState(false)
+    const [emailCurrentError, setEmailCurrentError] = useState(false)
 
     useEffect(() => {
         if (nameError || emailError || passwordError) {
@@ -111,6 +113,7 @@ export default function Register({onLogin}) {
         if (formValue.password) {
             const { name, email, password } = formValue;
             AuthApi.register(name, email, password).then(() => {
+                onLogin({email, password})
             })
                 .catch((err) => {
                     console.log(err)
@@ -160,6 +163,7 @@ export default function Register({onLogin}) {
                         required
                     />
                     {(passwordDirty && [passwordError]) && <div className="authorizeError">{passwordError}</div>}
+                    {(emailCurrentDirty && [emailCurrentError]) && <div className="authorizeError">{emailCurrentError}</div>}
                     <button disabled={!formValid} type="submit" className={
                         formValid
                             ? "Authorize__ButtonLink"
