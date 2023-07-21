@@ -41,6 +41,11 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
     }, []);
 
     useEffect(() => {
+        setName(currentUser.name)
+        setEmail(currentUser.email)
+    }, [currentUser.name, currentUser.email])
+
+    useEffect(() => {
         if (currentUser.name !== name || currentUser.email !== email) {
           setIsEditData(false);
         } else {
@@ -64,7 +69,11 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
                 setIsEditData(true);
                 setErrorEdit(false);
             })
-            .catch(() => {
+            .catch((res) => {
+                handleShowInfoMessage({
+                    text: (`${res.message}`),
+                    isSuccess: true
+                  })
                 setErrorEdit(true);
             })
             .finally(() => {
@@ -98,23 +107,17 @@ export default function Profile({ onExit, handleShowInfoMessage }) {
             setEmailError('');
         }
     }
-
-    useEffect(() => {
-        setName(currentUser.name)
-        setEmail(currentUser.email)
-    }, [currentUser])
-
     const handleSubmit = (e) => {
         e.preventDefault()
         if (name !== currentUser.name || email !== currentUser.email) {
             setIsActiveEdit(true);
             handelEditProfile({ name, email });
+            setIsActiveEdit(false);
             handleShowInfoMessage({
                 text: "Данные изменены!",
                 isSuccess: true
               })
-              setIsActiveEdit(false);
-        } else {
+        } else { 
             setIsActiveEdit(false);
         }
     }

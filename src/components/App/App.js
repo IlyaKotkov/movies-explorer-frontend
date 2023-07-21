@@ -53,22 +53,22 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  function handleLogin(formValue) {   
-      if (!formValue.email || !formValue.password) {
-        return
-      }
-      AuthApi.authorize(formValue.email, formValue.password)
-        .then((data) => {
-          if (data.token) {
-            localStorage.setItem('jwt', data.token)
-            setFormValue({ email: '', password: '' });
-            setIsLoggedIn(true);
-            navigate("/movies", { replace: true });
-          }
-        })
-        .catch((err) => {
-          console.log(err.message)
-        });
+  function handleLogin(formValue) {
+    if (!formValue.email || !formValue.password) {
+      return
+    }
+    AuthApi.authorize(formValue.email, formValue.password)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem('jwt', data.token)
+          setFormValue({ email: '', password: '' });
+          setIsLoggedIn(true);
+          navigate("/movies", { replace: true });
+        }
+      })
+      .catch((err) => {
+        console.log(err.message)
+      });
   }
 
   function handleLogout() {
@@ -95,12 +95,12 @@ function App() {
           setIsTokenChecked(true);
           setIsLoading(false);
         })
-        
+
     }
     else {
-      setIsTokenChecked(true); 
-      setIsLoading(false); 
-      }
+      setIsTokenChecked(true);
+      setIsLoading(false);
+    }
   }
 
   function handleShowInfoMessage(message) {
@@ -118,69 +118,75 @@ function App() {
         {isLoading ? (
           <Preloader />
         ) : (
-        <Routes>
-          <Route path='/' element={
-            <Main
-              isLoggedIn={isLoggedIn}
-            />
-          } />
-
-          <Route
-            path='/movies'
-            element={
-              <ProtectedRouteElement
+          <Routes>
+            <Route path='/' element={
+              <Main
                 isLoggedIn={isLoggedIn}
-                element={Movies}
               />
-            }
-          />
+            } />
 
-          <Route
-            path='/saved-movies'
-            element={
-              <ProtectedRouteElement
-                isLoggedIn={isLoggedIn}
-                element={SavedMovies}
-              />
-            }
-          />
-
-          <Route
-            path='/profile'
-            element={
-              <ProtectedRouteElement
-                isLoggedIn={isLoggedIn}
-                element={Profile}
-                handleShowInfoMessage={handleShowInfoMessage}
-                emailUser={email}
-                onExit={handleLogout}
-              />
-            }
-          />
-
-          <Route path='/signin' element={
-            <Login
-              onLogin={handleLogin}
-              setEmail={setEmail}
-            />
-          }
-          />
-
-          <Route path='/signup' element={
-            <Register 
-              onLogin={handleLogin}
-            />
-          }
-          />
-          {location.pathname !== '/' && (
             <Route
-              path="*"
+              path='/movies'
               element={
-                <NotFoundError />
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  element={Movies}
+                />
               }
-          />
-          )}
-        </Routes>
+            />
+
+            <Route
+              path='/saved-movies'
+              element={
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  element={SavedMovies}
+                />
+              }
+            />
+
+            <Route
+              path='/profile'
+              element={
+                <ProtectedRouteElement
+                  isLoggedIn={isLoggedIn}
+                  element={Profile}
+                  handleShowInfoMessage={handleShowInfoMessage}
+                  emailUser={email}
+                  onExit={handleLogout}
+                />
+              }
+            />
+            
+            <Route path='/signin' element={
+              !isLoggedIn ?
+              <Login
+                onLogin={handleLogin}
+                setEmail={setEmail}
+              />
+              :
+              <Navigate to="/movies" />
+            }
+            />
+
+            <Route path='/signup' element={
+              !isLoggedIn ?
+              <Register
+                onLogin={handleLogin}
+              />
+              :
+              <Navigate to="/movies" />
+            }
+            />
+            {location.pathname !== '/' && (
+              <Route
+                path="*"
+                element={
+                  <NotFoundError />
+                }
+              />
+            )}
+          </Routes>
         )}
         <InfoTooltip
           onClose={closeAllPopups}
