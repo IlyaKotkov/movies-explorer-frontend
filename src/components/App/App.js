@@ -150,7 +150,9 @@ function App() {
           />
 
           <Route path='/signup' element={
-            <Register />
+            <Register 
+              onLogin={handleLogin}
+            />
           }
           />
           {location.pathname !== '/' && (

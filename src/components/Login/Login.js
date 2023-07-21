@@ -86,8 +86,6 @@ export default function Login({ onLogin }) {
         if (data.token) {
           localStorage.setItem('token', data.token)
           setFormValue({ email: '', password: '' });
-          onLogin(formValue.email);
-          navigate("/movies", { replace: true });
         }
       })
       .catch((err) => {

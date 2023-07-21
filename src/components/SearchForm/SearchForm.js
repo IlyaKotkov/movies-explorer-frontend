@@ -32,7 +32,8 @@ export default function SearchForm({ handleSearch }) {
             return;
         }
         setError(false);
-        setPlaceholderContent('query');
+        const queryMovies = localStorage.getItem('query');
+        setPlaceholderContent(queryMovies);
         if (pathname === '/movies') {
             localStorage.setItem('query', inputValue);
         } 

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function Register() {
+export default function Register({onLogin}) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -96,7 +96,7 @@ export default function Register() {
         }
 
         setPassword(e.target.value)
-        if (e.target.value.length <= 8) {
+        if (8 > e.target.value.length) {
             setPasswordError("пароль должен быть не менее 8 символов")
             if (!e.target.value) {
                 setPasswordError("пароль должен быть не менее 8 символов")
@@ -111,7 +111,6 @@ export default function Register() {
         if (formValue.password) {
             const { name, email, password } = formValue;
             AuthApi.register(name, email, password).then(() => {
-                navigate('/movies', { replace: true })
             })
                 .catch((err) => {
                     console.log(err)
