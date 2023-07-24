@@ -1,0 +1,90 @@
+.popup__info-message {
+    margin: 26px 0 23px;
+    padding-top: 152px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 120px auto;
+}
+
+.popup__info-message_type-cancel {
+    background-image: url(../../images/cancel.png);
+}
+
+.popup__info-message_type-confirm {
+    background-image: url(../../images/confirm.png);
+}
+
+.popup{
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    transition: visibility .5s, opacity .5s linear;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup_opened {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup__container {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border-radius: 10px;
+    width: 430px;
+    position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+    .popup__container{
+        width: 280px;
+    }
+}
+
+.popup__closed {
+    padding: 0;
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background: none;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-image: url(../../images/CloseIcon.png);
+    transition: opacity .82s linear;
+    opacity: 1;
+}
+
+.popup__closed:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 1023px) {
+    .popup__closed{
+        right: 0;
+        background-image: url(../../images/CloseIcon1230.png);
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,129 +1,106 @@
 import './MoviesCard.css'
-import imageMovie from '../../images/pic__COLOR_pic.png'
-import imageSaved from '../../images/save6d.png'
+import { correctMinute } from '../../utils/Correct'
+import { useState } from 'react';
+import mainApi from '../../utils/MainApi';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
 
-export default function MoviesCard(props) {
-    return (
+export default function MoviesCard({ movie }) {
 
-        <div className='MoviesCardList__container'>
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
+  const [isSaved, setIsSaved] = useState(false);
+  const [savedId, setSavedId] = useState('');
+  const location = useLocation()
 
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
+  useEffect(() => {
+    const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+    if (savedMovies) {
+      savedMovies.forEach((savedMovie) => {
+        if (savedMovie.movieId === movie.id || savedMovie._id === movie._id) {
+          setIsSaved(true);
+          setSavedId(savedMovie._id);
+        }
+      });
+    }
+  }, [movie._id, movie.id]);
 
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
+  const handleMovieSaved = (evt) => {
+    if (!isSaved) {
+      const newMovie = {};
+      const { image, id } = movie;
 
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
+      Object.assign(newMovie, movie);
+      delete newMovie.id;
+      delete newMovie.created_at;
+      delete newMovie.updated_at;
 
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
+      Object.entries(newMovie).forEach((key) => {
+        if (!key[1]) {
+          newMovie[key[0]] = '...';
+        }
+      });
 
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
+      mainApi
+        .saveMovie({
+          ...newMovie,
+          image: `https://api.nomoreparties.co/${image.url}`,
+          thumbnail: `https://api.nomoreparties.co${image.url}`,
+          movieId: id,
+        })
+        .then((savedMovie) => {
+          setIsSaved(true);
+          setSavedId(savedMovie._id);
+          let savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+          if (!savedMovies) {
+            savedMovies = [];
+          }
+          savedMovies.push(savedMovie);
+          localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    } else {
+      mainApi
+        .deleteMovie(savedId)
+        .then(() => {
+          setIsSaved(false);
+          const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+          let index = 0;
+          for (let i = 0; i < savedMovies.length; i += 1) {
+            const film = savedMovies[i];
+            if (film._id === movie._id) {
+              index = i;
+            }
+          }
+          savedMovies.splice(index, 1);
+          localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+          if (location.pathname === '/saved-movies') {
+            evt.target.closest('.MoviesCard__Container').remove();
+          }
+        })
+        .catch((err) => console.log('error:', err));
+    }
+  };
+  return (
+    <div className='MoviesCard__Container'>
+      <div className='MoviesCard__headingContainer'>
+        <h3 className='MoviesCard__name'>{movie.nameRU}</h3>
+        <p className='MoviesCard__time'>{correctMinute(movie.duration)}</p>
+      </div>
+      <a href={movie.trailerLink} target='_blank' rel='noreferrer'>
+        <img className='MoviesCard__imageMovie' src={
+            location.pathname === '/movies'
+              ? `https://api.nomoreparties.co/${movie.image.url}`
+              : movie.image
+          } alt={movie.nameRU} />
+      </a>
+      <button onClick={handleMovieSaved} className={
+        `MoviesCard__Button ${location.pathname === "/saved-movies" && 'MoviesCard__deleteMovie'}
+            ${isSaved
+          ? 'MoviesCard__saveMovie'
+          : 'MoviesCard__notSaved'}`}>
 
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__saveMovieSaved'>
-                    <img className='MoviesCard__imgSave' src={imageSaved} alt='значок галочки' />
-                </button>
-            </div>
-
-            <div className='MoviesCard__Container'>
-                <div className='MoviesCard__headingContainer'>
-                    <h3 className='MoviesCard__name'>В погоне за Бенкси</h3>
-                    <p className='MoviesCard__time'>27 минут</p>
-                </div>
-                <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                <button className='MoviesCard__saveMovie MoviesCard__notSaved'>Сохранить</button>
-            </div>
-
-        </div>
-    )
+      </button>
+    </div>
+  )
 }

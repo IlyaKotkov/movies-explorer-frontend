@@ -90,38 +90,48 @@
     }
 }
 
-.MoviesCard__saveMovie {
-    margin: 0;
-    margin-top: 18px;
-    align-self: center;
+.MoviesCard__Button {
+    width: 100px;
     height: 29px;
-    color: white;
-    font-size: 12px;
-    background: #313131;
-    border-radius: 30px;
-    border: none;
+    margin-top: 15px;
+    margin-left: 129px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-
-.MoviesCard__saveMovie:hover {
+.MoviesCard__Button:hover {
     transition: opacity .5s linear;
     opacity: .6;
 }
 
-@media screen and (max-width: 320px) {
-    .MoviesCard__saveMovie {
-        margin-top: 14px;
-    }
+.MoviesCard__saveMovie {
+    background-image: url(../../images/save6d.png);
 }
 
 .MoviesCard__notSaved {
-    width: 100px;
+    background-image: url(../../images/save6.svg);
 }
 
-.MoviesCard__saveMovieSaved {
-    background: transparent;
+.MoviesCard__deleteMovie {
+    background-image: url(../../images/d6.png);
 }
 
-.Moviescard__deleteMovie {
-    background: transparent;
+@media screen and (max-width: 320px) {
+    .MoviesCard__saveMovie {
+        margin-top: 10px;
+        margin-left: 100px;
+    }
+    .MoviesCard__notSaved {
+        margin-top: 10px;
+        margin-left: 100px;
+    }
+    .MoviesCard__deleteMovie {
+        margin-top: 10px;
+        margin-left: 100px;
+    }
 }

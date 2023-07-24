@@ -2,71 +2,79 @@ import Header from "../Header/Header"
 import logo from "../../images/logo.png"
 import SearchForm from "../SearchForm/SearchForm"
 import Footer from "../Footer/Footer"
-import imageMovie from "../../images/pic__COLOR_pic.png"
-import imgDelete from "../../images/d6.png"
 import SideBar from "../SideBar/SideBar"
+import MoviesCardList from "../MoviesCardList/MoviesCardList"
+import { useState, useEffect } from "react"
+import searchFilter from "../../utils/Filter"
+import mainApi from "../../utils/MainApi"
+import Preloader from "../Preloader/Preloader"
+import { Link } from "react-router-dom"
+import { CurrentUserContext } from "../../contexts/CurrentUserContext"
+import { useContext } from "react"
 
 export default function SavedMovies(props) {
+    const currentUser = useContext(CurrentUserContext)
+    const [movies, setMovies] = useState(
+        JSON.parse(localStorage.getItem('savedMovies')) || []
+    );
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
+    const token = localStorage.getItem("token");
+
+    const handleSearch = (query, isShort) => {
+        setIsLoading(true);
+        setError('');
+        const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+        const filtered = searchFilter(savedMovies, query, isShort);
+        if (filtered.length === 0) {
+            setError('Ничего не найдено');
+        }
+        setMovies(filtered);
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        mainApi
+            .getSavedMovies(token)
+            .then((savedMovies) => {
+                const userMovies = savedMovies.filter((film) => film.owner === currentUser._id);
+                localStorage.setItem('savedMovies', JSON.stringify(userMovies));
+                setIsLoading(false);
+                if (savedMovies.length === 0) {
+                    setError();
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }, [currentUser._id, token]);
+
+
     return (
         <>
             <Header>
                 <div className="Header__moviesContainer">
                     <div className="Header__moviesLinkContainer">
-                        <a href="/">
+                        <Link to="/">
                             <img
                                 className="Header__Logo"
                                 src={logo}
                                 alt="Логотип сайта movies-explorer"
                             />
-                        </a>
-                        <a href="/movies" className="Header__movies Header__moviesHidden">Фильмы</a>
-                        <a href="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</a>
+                        </Link>
+                        <Link to="/movies" className="Header__movies Header__moviesHidden">Фильмы</Link>
+                        <Link to="/saved-movies" className="Header__movies Header__moviesHidden">Сохранённые фильмы</Link>
                     </div>
-                    <a href="/profile">
-                        <button className="Header__accountButton Header__accountButtonHidden">Аккаунт</button>
-                    </a>
+                    <Link to="/profile" className="Header__accountButton Header__accountButtonHidden">Аккаунт</Link>
                     <SideBar />
                 </div>
             </Header>
-            <SearchForm />
-            <div className='MoviesCardList__container'>
-                <div>
-                    <div className='MoviesCard__Container'>
-                        <div className='MoviesCard__headingContainer'>
-                            <p className='MoviesCard__name'>В погоне за Бенкси</p>
-                            <p className='MoviesCard__time'>27 минут</p>
-                        </div>
-                        <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                        <button className='MoviesCard__saveMovie Moviescard__deleteMovie'>
-                            <img src={imgDelete} alt='значок крестика' />
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <div className='MoviesCard__Container'>
-                        <div className='MoviesCard__headingContainer'>
-                            <p className='MoviesCard__name'>В погоне за Бенкси</p>
-                            <p className='MoviesCard__time'>27 минут</p>
-                        </div>
-                        <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                        <button className='MoviesCard__saveMovie Moviescard__deleteMovie'>
-                            <img src={imgDelete} alt='значок крестика' />
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    <div className='MoviesCard__Container'>
-                        <div className='MoviesCard__headingContainer'>
-                            <p className='MoviesCard__name'>В погоне за Бенкси</p>
-                            <p className='MoviesCard__time'>27 минут</p>
-                        </div>
-                        <img className='MoviesCard__imageMovie' alt='изображение из фильма' src={imageMovie} />
-                        <button className='MoviesCard__saveMovie Moviescard__deleteMovie'>
-                            <img src={imgDelete} alt='значок крестика' />
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <SearchForm handleSearch={handleSearch} />
+            {isLoading ? (
+                <Preloader />
+            ) : (
+                <MoviesCardList  movies={movies} error={error}/>
+            )}
             <Footer />
         </>
     )

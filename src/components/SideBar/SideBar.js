@@ -2,6 +2,7 @@ import React from 'react';
 import './SideBar.css'
 import menuImg from "../../images/menu-icon__COLOR_icon-color.svg"
 import exitimg from "../../images/Group.svg"
+import { Link } from 'react-router-dom';
 
 export default function SideBar() {
 
@@ -28,11 +29,11 @@ export default function SideBar() {
                         <nav className="SideBar__menu-list">
 
                             <div className='SideBar__menu-list-container'>
-                                <a href="/" className="Header__movies">Главная</a>
-                                <a href="/movies" className="Header__movies">Фильмы</a>
-                                <a href="/saved-movies" className="Header__movies">Сохранённые фильмы</a>
+                                <Link to="/" className="Header__movies">Главная</Link>
+                                <Link to="/movies" className="Header__movies">Фильмы</Link>
+                                <Link to="/saved-movies" className="Header__movies">Сохранённые фильмы</Link>
                             </div>                
-                            <a href="/profile" className="Header__accountButton Header__accountButtonMenu">Аккаунт</a>
+                            <Link to="/profile" className="Header__accountButton Header__accountButtonMenu">Аккаунт</Link>
                         </nav>
                     </div>
                 </div>

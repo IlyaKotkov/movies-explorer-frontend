@@ -22,6 +22,17 @@
     align-items: flex-start;
 }
 
+.authorizeError {
+    color: #EE3465;
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+    margin-top: 10px;
+}
+
+
+
 .Authorize__ButtonLink {
     text-align: center;
     text-decoration: none;
@@ -33,14 +44,27 @@
     cursor: pointer;
     margin-top: 179px;
     font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: 45px;
-color: white;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+    color: white;
 }
 
-.Authorize__InputPassword {
-    color: #EE3465;
+.Authorize__ButtonLinkNoActive {
+    background: #F8F8F8;
+    color: #C2C2C2;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 179px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
 }
 
 .Authorize__Heaing {
@@ -76,7 +100,7 @@ color: white;
     width: 100%;
     margin: 0;
     border: none;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 8px;
     background: #2F2F2F;
     color: #FFF;
@@ -153,6 +177,7 @@ color: white;
         display: block;
         width: 38px;
     }
+
     .Authorize__Heaing {
         width: 260px;
         margin-top: 50px;
@@ -195,7 +220,7 @@ color: white;
         font-size: 12px;
     }
 
-    .Authorize__unauthorizeText { 
+    .Authorize__unauthorizeText {
         margin-top: 14px;
     }
 

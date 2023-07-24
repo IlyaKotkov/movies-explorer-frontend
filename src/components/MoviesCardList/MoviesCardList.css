@@ -1,12 +1,11 @@
 .MoviesCardList {
     margin: 0 auto;
     padding-top: 70px;
+    
 }
 
 .MoviesCardList__container {
     width: 100%;
-    padding-top: 70px;
-    min-height: 619px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 360px);
     justify-content: center;
@@ -36,7 +35,6 @@
 .MoviesCardList__downloadMore {
     margin: 0;
     margin-top: 50px;
-    height: 166px;
     display: flex;
     justify-content: center;
 }
